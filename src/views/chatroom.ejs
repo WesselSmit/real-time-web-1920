@@ -1,0 +1,36 @@
+<%- include('head') %>
+
+<body>
+
+	<header>
+		<h1>Chatroom <span class="roomName"></span></h1>
+	</header>
+
+	<main>
+		<aside id="chat">
+			<div id="messagesContainer"></div>
+			<form id="userInput">
+				<input id="userMessage" type="text" placeholder="Type a message" required autocomplete="off">
+				<button>Send</button>
+			</form>
+		</aside>
+
+		<div id="userOverview">
+			<ul id="userList">
+				<li class="userName"></li>
+			</ul>
+		</div>
+
+		<div id="roomOverview">
+			<ul id="roomList">
+				<li class="roomName"></li>
+			</ul>
+		</div>
+	</main>
+
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
+</html>

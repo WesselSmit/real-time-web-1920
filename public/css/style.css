@@ -1,0 +1,82 @@
+:root {
+	--main-color: #05100C;
+	--primary-color: #006E5B;
+	--secondary-color: #008871;
+	--text-color: #EEE7DC;
+
+	--navBar-height: 60px;
+}
+
+body {
+	margin: var(--navBar-height) 0 0 0;
+	background-color: var(--main-color);
+	color: var(--text-color);
+}
+
+header {
+	background-color: var(--secondary-color);
+	position: fixed;
+	top: 0;
+	height: var(--navBar-height);
+	width: 100vw;
+}
+
+header h1 {
+	margin: 10px 0 0 10px;
+}
+
+main {
+	background-color: var(--main-color);
+	height: 100%;
+	display: grid;
+	grid-template-columns: 1fr 25vw 25vw;
+	overflow: hidden;
+}
+
+#chat {
+	background-color: var(--main-color);
+	overflow-y: hidden;
+}
+
+#chat div {
+	max-height: calc(100% - var(--navBar-height) - 40px);
+	height: 100%;
+	overflow-y: scroll;
+	padding: 20px;
+}
+
+#chat form {
+	margin: 0;
+	width: 100%;
+	height: var(--navBar-height);
+	background-color: var(--primary-color);
+	display: grid;
+	grid-template-columns: 1fr 100px;
+}
+
+button {
+	background-color: var(--secondary-color);
+	height: 30px;
+	width: calc(100% - 30px);
+	margin: auto 15px;
+	border: none;
+	color: var(--text-color);
+}
+
+input {
+	background-color: var(--main-color);
+	height: 30px;
+	width: calc(100% - 15px);
+	margin: auto 15px;
+	border: none;
+	color: var(--text-color);
+	padding: 0 15px;
+}
+
+#userOverview {
+	background-color: rgb(18, 32, 27);
+}
+
+#roomOverview {
+	background-color: var(--primary-color);
+}
