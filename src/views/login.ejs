@@ -8,9 +8,11 @@
 
 	<main>
 		<form id="login" method="POST" action="/chatroom">
-			<label for="username">Username</label>
+			<label for="username">Enter a username to use the app</label>
 			<input id="username" type="text" name="username" placeholder="Enter username" required autocomplete="off">
-			<input type="submit" value="log in">
+
+			<input id="room" type="hidden" name="roomName" value="General" autocomplete="off">
+			<input type="submit" value="Log in">
 		</form>
 	</main>
 

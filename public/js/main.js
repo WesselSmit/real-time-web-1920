@@ -1,6 +1,28 @@
 const socket = io()
 
 const chat = document.getElementById('messagesContainer')
+const roomNameEl = document.getElementById('roomName')
+const userListEl = document.getElementById('userList')
+const roomListEl = document.getElementById('roomList')
+
+
+//Join room
+const username = document.getElementById('loggedInUser').value
+const joinedRoom = "General"
+socket.emit('join room', {
+	username,
+	room: joinedRoom
+})
+
+
+
+socket.on('room users', ({
+	room,
+	users
+}) => {
+	outputMenu(users)
+})
+
 
 
 socket.on('message', message => {
@@ -31,8 +53,28 @@ chatInput.addEventListener('submit', e => {
 
 
 function outputMessage(message) {
-	const paragraph = document.createElement('p')
-	paragraph.textContent = message.user + ": " + message.text + " - (at: " + message.time + ")"
+	const msgBlock = document.createElement('article')
+	msgBlock.classList.add('message')
+	chat.append(msgBlock)
 
-	chat.append(paragraph)
+	const msgMeta = document.createElement('h5')
+	msgMeta.textContent = `${message.user} (${message.time})`
+	msgBlock.append(msgMeta)
+
+	const msgText = document.createElement('p')
+	msgText.textContent = `${message.text}`
+	msgBlock.append(msgText)
+}
+
+function outputMenu(users) {
+	userListEl.innerHTML = `Users in ${users[0].room}: ${users.map(user => `<li>${user.username}</li>`).join("")}`
+}
+
+
+function outputRoomNames(roomList) {
+	roomList.rooms.forEach(room => {
+		const li = document.createElement('li')
+		li.textContent = room
+		roomListEl.append(li)
+	})
 }

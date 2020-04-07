@@ -4,6 +4,7 @@
 
 	<header>
 		<h1>Chatroom</h1>
+		<a href="/">Logout</a>
 	</header>
 
 	<main>
@@ -15,18 +16,29 @@
 			</form>
 		</aside>
 
-		<div id="userOverview">
-			<ul id="userList">
-				<li class="userName"></li>
-			</ul>
+		<div id="menu">
+			<ul id="userList">Users in <span id="roomName"></span> (room):</ul>
 		</div>
 
-		<div id="roomOverview">
-			<ul id="roomList">
-				<li class="roomName"></li>
-			</ul>
+		<div id="concept">
+			<h1>Welcome to chatroom!</h1>
+			<p>This app is meant to be a communcation platform.</p>
+			<p>But really it's just an exercise to understand socketIO that I had to do for the
+				webdevelopment minor I'm following.</p>
+
+			<h1>socketIO</h1>
+			<p>Socket.IO is an awesome library that enables real-time, bidirectional and event-based communication
+				between the browser and the server.</p>
+			<p>It's the library that enables you to send & receive messages to/from
+				other people.</p>
+
+			<h1>Author, Developer & Designer</h1>
+			<p>Designed & built by Wessel Smit, you can find the code on <a
+					href="https://github.com/WesselSmit/real-time-web-1920" target="blank">github</a>.</p>
 		</div>
 	</main>
+
+	<input type="hidden" id="loggedInUser" name="loggedInUser" value="<%= userId %>">
 
 
 	<script src="/socket.io/socket.io.js"></script>
