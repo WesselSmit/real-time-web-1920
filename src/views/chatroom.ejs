@@ -10,12 +10,17 @@
 		<aside id="chat">
 			<div id="messagesContainer"></div>
 			<form id="userInput">
-				<input id="userMessage" type="text" placeholder="Type a message" required autocomplete="off">
+				<input id="userMessage" type="text" placeholder="Type a message" autocomplete="off" autofocus>
 				<button>Send</button>
 			</form>
 		</aside>
 
 		<div id="menu">
+			<h1>Commands</h1>
+			<p>You can use hidden features through commands.</p>
+			<p>Commands are keywords prefixed with an exclamation point "!".</p>
+			<p>Type <strong>!help</strong> in chat to see all available commands.</p>
+
 			<ul id="userList">Users in <span id="roomName"></span> (room):</ul>
 		</div>
 

@@ -36,17 +36,13 @@ module.exports = (io) => {
 		})
 
 
-
-
-
-		//Listen to chatmessages
-		socket.on('chatMessage', message => {
+		//Listen to chat messages
+		socket.on('chat message', message => {
 			const user = getCurrentUser(socket.id)
 
 			//Let users see message
 			io.to(user.room).emit('message', format(user.username, message))
 		})
-
 
 
 		//Listen to clients disconnecting
