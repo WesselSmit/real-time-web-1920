@@ -1,5 +1,4 @@
 const users = []
-const rooms = []
 
 function userJoin(id, username, room) {
 	const user = {
@@ -9,10 +8,6 @@ function userJoin(id, username, room) {
 	}
 
 	users.push(user)
-
-	if (!rooms.includes(user.room)) {
-		rooms.push(user.room)
-	}
 
 	return user
 }
@@ -37,15 +32,9 @@ function getRoomUsers(room) {
 }
 
 
-
-function getRooms() {
-	return rooms
-}
-
 module.exports = {
 	userJoin,
 	getCurrentUser,
 	userLeave,
-	getRoomUsers,
-	getRooms
+	getRoomUsers
 }

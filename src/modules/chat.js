@@ -2,15 +2,14 @@ const {
 	userJoin,
 	getCurrentUser,
 	userLeave,
-	getRoomUsers,
-	getRooms
+	getRoomUsers
 } = require('#modules/users')
 const format = require('#modules/format')
 
 module.exports = (io) => {
-	const botName = "chatBot"
+	const botName = "ModeratorBot"
 
-	//Run when a client connects
+	//Listen to users connecting
 	io.on('connection', socket => {
 		socket.on('join room', ({
 			username,
@@ -18,23 +17,21 @@ module.exports = (io) => {
 		}) => {
 			const user = userJoin(socket.id, username, room)
 
+			//Join room
 			socket.join(user.room)
 
-			//Emit message ONLY to joined user
-			socket.emit('message', format(botName, "You've joined the chat"))
+			//Let you know you've joined
+			socket.emit('announcement', format(botName, "You've joined the chat"))
 
-			//Broadcast-emit message to ALL users EXCEPT joined user 
+			//Let others know you've joined
 			socket.broadcast
 				.to(user.room)
-				.emit('message', format(botName, `${user.username} has joined the chat`))
+				.emit('announcement', format(botName, `${user.username} has joined the chat`))
 
+			//Get user-list of all users in room
 			io.to(user.room).emit('room users', {
 				room: user.room,
 				users: getRoomUsers(user.room)
-			})
-
-			io.to(user.room).emit('rooms', {
-				rooms: getRooms()
 			})
 		})
 
@@ -42,31 +39,28 @@ module.exports = (io) => {
 
 
 
-		//Listen for chatmessages
+		//Listen to chatmessages
 		socket.on('chatMessage', message => {
 			const user = getCurrentUser(socket.id)
 
-			//Broadcast to all users
+			//Let users see message
 			io.to(user.room).emit('message', format(user.username, message))
 		})
 
 
 
-		//Runs when client disconnects
+		//Listen to clients disconnecting
 		socket.on('disconnect', () => {
 			const user = userLeave(socket.id)
 
 			if (user) {
-				//Broadcast to all users
-				io.to(user.room).emit('message', format(botName, `${user.username} has left the chat`))
+				//Let others know you've left
+				io.to(user.room).emit('announcement', format(botName, `${user.username} has left the chat`))
 
+				//Get user-list of all users in room
 				io.to(user.room).emit('room users', {
 					room: user.room,
 					users: getRoomUsers(user.room)
-				})
-
-				io.to(user.room).emit('rooms', {
-					roomList: getRooms()
 				})
 			}
 		})

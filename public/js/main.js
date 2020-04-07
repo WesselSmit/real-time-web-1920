@@ -3,7 +3,6 @@ const socket = io()
 const chat = document.getElementById('messagesContainer')
 const roomNameEl = document.getElementById('roomName')
 const userListEl = document.getElementById('userList')
-const roomListEl = document.getElementById('roomList')
 
 
 //Join room
@@ -25,13 +24,21 @@ socket.on('room users', ({
 
 
 
-socket.on('message', message => {
-	console.log(message)
-
-	outputMessage(message)
+socket.on('announcement', announcement => {
+	outputMessage(announcement, "announcement")
 })
 
 
+
+socket.on('message', message => {
+	outputMessage(message, "message")
+
+	//Scroll down to new message
+	chat.scrollTop = chat.scrollHeight
+})
+
+
+//Send message + fix small styling/UX things
 const chatInput = document.getElementById('userInput')
 chatInput.addEventListener('submit', e => {
 	e.preventDefault()
@@ -46,15 +53,13 @@ chatInput.addEventListener('submit', e => {
 
 	//Focus input
 	msg.focus()
-
-	//Scroll to new message
-	chat.scrollTop = chat.scrollHeight
 })
 
 
-function outputMessage(message) {
+//Show sent/received messages
+function outputMessage(message, type) {
 	const msgBlock = document.createElement('article')
-	msgBlock.classList.add('message')
+	msgBlock.classList.add(`${type}`)
 	chat.append(msgBlock)
 
 	const msgMeta = document.createElement('h5')
@@ -64,17 +69,18 @@ function outputMessage(message) {
 	const msgText = document.createElement('p')
 	msgText.textContent = `${message.text}`
 	msgBlock.append(msgText)
+
+	if (message.user === username) {
+		msgBlock.classList.add('you')
+	}
+
+	msgBlock.scrollIntoView({
+		block: "end"
+	})
 }
 
+
+//Show all users in chat
 function outputMenu(users) {
 	userListEl.innerHTML = `Users in ${users[0].room}: ${users.map(user => `<li>${user.username}</li>`).join("")}`
-}
-
-
-function outputRoomNames(roomList) {
-	roomList.rooms.forEach(room => {
-		const li = document.createElement('li')
-		li.textContent = room
-		roomListEl.append(li)
-	})
 }

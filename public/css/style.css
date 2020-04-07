@@ -6,10 +6,11 @@
 :root {
 	--primary-dark: #202020;
 	--secondary-dark: #080608;
-	--primary-color: #CE673E;
+	--primary-color: #ce673e;
+	--primary-opposite-color: #d4d4d4;
 	--navBar-height: 60px;
 	font-family: Arial, Helvetica, sans-serif;
-	color: white;
+	color: var(--primary-opposite-color);
 }
 
 body {
@@ -18,7 +19,7 @@ body {
 }
 
 header {
-	background-color: var(--primary-dark);
+	background-color: var(--secondary-dark);
 	position: fixed;
 	top: 0;
 	height: var(--navBar-height);
@@ -55,18 +56,8 @@ main {
 
 #login input {
 	grid-row: 2 / 2;
-}
-
-#chat {
-	background-color: var(--primary-color);
-	overflow-y: hidden;
-}
-
-#chat div {
-	max-height: calc(100% - var(--navBar-height) - 40px);
-	height: 100%;
-	overflow-y: scroll;
-	padding: 20px;
+	color: var(--primary-opposite-color);
+	font-size: 18px;
 }
 
 form {
@@ -85,6 +76,8 @@ input {
 	margin: auto 0 auto 15px;
 	border: none;
 	padding: 0 15px;
+	color: var(--primary-opposite-color);
+	font-size: 18px;
 }
 
 button,
@@ -94,7 +87,8 @@ input[type=submit] {
 	width: calc(100% - 15px);
 	margin: auto 15px auto 0;
 	border: none;
-	color: var(--text-color);
+	cursor: pointer;
+	font-size: 18px;
 }
 
 h1 {
@@ -104,9 +98,18 @@ h1 {
 	font-size: 30px;
 }
 
+a {
+	color: var(--primary-opposite-color);
+}
+
+a:visited {
+	color: var(--primary-opposite-color);
+}
+
 #concept {
 	background-color: var(--secondary-dark);
 	padding: 15%;
+	overflow-y: scroll;
 }
 
 #concept p {
@@ -114,30 +117,108 @@ h1 {
 	font-family: Helvetica, sans-serif;
 }
 
+#concept h1 {
+	line-height: 1.1;
+}
+
 #concept h1:not(:first-of-type) {
-	margin-top: 100px;
+	margin-top: 60px;
 }
 
 #menu {
 	background-color: var(--primary-dark);
 	padding: 15%;
+	overflow-y: scroll;
 }
 
-.message {
+#chat {
+	background-color: var(--primary-color);
+	overflow-y: hidden;
+	position: relative;
+}
+
+#chat div {
+	max-height: calc(100% - var(--navBar-height) - 20px);
+	height: 100%;
+	overflow-y: scroll;
+	padding: 20px 0 0 0;
+}
+
+#userInput {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 50vw;
+}
+
+article {
 	padding: 5px;
 	width: fit-content;
 	margin-bottom: 10px;
 }
 
-.message h5 {
+article h5 {
 	margin: 0;
 	font-family: "utmTimes", Arial, Helvetica, sans-serif;
 	font-size: 16px;
 }
 
-.message p {
+article p {
 	margin: 0;
 	font-size: 20px;
+}
+
+article.message {
+	background-color: var(--primary-dark);
+	padding: 10px;
+	margin-left: 20px;
+	border: 1px solid var(--primary-dark);
+	border-radius: 0 10px 10px 10px;
+}
+
+article.message h5 {
+	font-size: 15px;
+}
+
+article.message p {
+	margin-top: 5px;
+}
+
+article.announcement {
+	background-color: var(--primary-color);
+	color: var(--primary-dark);
+	width: 100%;
+	text-align: center;
+	margin: 0;
+	font-style: italic;
+}
+
+article.announcement h5 {
+	display: none;
+}
+
+article.announcement h5::after {
+	content: "-";
+	padding: 0 10px;
+	font-size: 16px;
+	display: inline-block;
+	font-family: Helvetica, sans-serif;
+}
+
+article.announcement p {
+	font-size: 16px;
+	display: inline-block;
+	font-family: Helvetica, sans-serif;
+}
+
+article.message.you {
+	margin: 0 20px 10px auto;
+	border: 1px solid var(--primary-dark);
+	border-radius: 10px 0 10px 10px;
+}
+
+#chat div article:last-of-type {
+	margin-bottom: 20px;
 }
 
 ul {
