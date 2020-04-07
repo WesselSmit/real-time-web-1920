@@ -1,7 +1,6 @@
 const moment = require('moment')
 
 module.exports = (user, text) => {
-	botName = "chatBot"
 	return {
 		user,
 		text,

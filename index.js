@@ -12,12 +12,16 @@ const io = socketio(server)
 const chat = require('#modules/chat')
 
 const router = {
+	login: require('#routes/login'),
 	chatroom: require('#routes/chatroom')
 }
 
 //Set public folder for assets
 app.use(express.static(path.join(__dirname + '/public')))
 
+app.use(express.urlencoded({
+	extended: true
+}))
 
 //Set sockets
 chat(io)
@@ -29,7 +33,9 @@ app.set('view engine', 'ejs');
 
 
 //Routes
-app.get('/', router.chatroom)
+app.get('/', router.login)
+app.post('/chatroom', router.chatroom)
+
 
 
 //Start server

@@ -7,15 +7,12 @@ socket.on('message', message => {
 	console.log(message)
 
 	outputMessage(message)
-
-	scrollDown()
 })
 
 
 const chatInput = document.getElementById('userInput')
 chatInput.addEventListener('submit', e => {
 	e.preventDefault()
-
 
 	const msg = document.getElementById('userMessage')
 
@@ -27,6 +24,9 @@ chatInput.addEventListener('submit', e => {
 
 	//Focus input
 	msg.focus()
+
+	//Scroll to new message
+	chat.scrollTop = chat.scrollHeight
 })
 
 
@@ -35,8 +35,4 @@ function outputMessage(message) {
 	paragraph.textContent = message.user + ": " + message.text + " - (at: " + message.time + ")"
 
 	chat.append(paragraph)
-}
-
-function scrollDown() {
-	chat.scrollTop = chat.scrollHeight
 }
