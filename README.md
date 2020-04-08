@@ -1,62 +1,54 @@
-# Real-Time Web @cmda-minor-web · 2019-2020
+# Practice Chat App
 
-During this course you will learn how to build a **meaningful** real-time application. You will learn techniques to setup an open connection between the client and the server. This will enable you to send data in real-time both ways, at the same time.
+To understand & get familiar with socketIO we had to make a chat app.
 
-## Goals
-- _Deal with real-time complexity_
-- _Handle real-time client-server interaction_
-- _Handle real-time data management_
-- _Handle multi-user support_
+People can join the room under an alias and chat with other people. 
 
-[Rubric][rubric]
+## Features 
 
-## Curriculum
+### See all users in current room
 
-### Week 1 - Hello Server
+In the sidebar there is a section titled "Users in `current-room-name`", it contains a list of all users currently in the room.
 
-Goal: Build and deploy a unique barebone real-time app  
+### Announcements
 
-[Exercises](https://github.com/cmda-minor-web/real-time-web-1920/blob/master/course/week-1.md)    
-[Slides](https://docs.google.com/presentation/d/1EVsEFgBnG699nce058ss_PkVJROQXDp5wJJ-IRXvzTA/edit?usp=sharing)  
+Non-user messages are called announcements. They have a special design to help the user differentiate between messages and announcements. Announcements examples are:
 
+* users joining the room 
+* users leaving the room
+* commands 
 
-### Week 2 - Sharing is caring  
+### Commands 
 
-Goal: Store, manipulate and share data between server-client   
+As unique feature the app has 2 commands (could be expanded later on..). 
 
-[Exercises](https://github.com/cmda-minor-web/real-time-web-1920/blob/master/course/week-2.md)    
-[Slides](https://docs.google.com/presentation/d/1woKoY59D8Zcttna0FzfNjEtGtT8oXWi9b5LYlukRISM/edit?usp=sharing)
+* **!help** | shows command explenation & list of all commands as announcement in chat
+* **!random** | shows a random gif from giphy as message 
 
+> `!random` isn't finished because the giphy website wouldn't let me create an account needed the aquire an api-key
 
-### Week 3 - Let’s take this show on the road 
+## Events
 
-Goal: Handle data sharing and multi-user support 
+To communicate in real-time between the client and server I've used socketIO, socketIO uses events to send data back-and-forth between client and server & respond to changes. 
 
-[Exercises](https://github.com/cmda-minor-web/real-time-web-1920/blob/master/course/week-3.md)  
-[Slides](https://docs.google.com/presentation/d/1SHofRYg87bhdqhv7DQb_HZMbW7Iq1PtqxpdtZHMbMmk/edit?usp=sharing)
+### join room
 
-> If you're seeing this message on a forked repo, it means one of our students hasn't changed the description yet 😈
+User joins room.
 
-<!-- Add a link to your live demo in Github Pages 🌐-->
+>triggered when the clientside-JS script is loaded
 
-<!-- ☝️ replace this description with a description of your own work -->
+### disconnect
 
-<!-- replace the code in the /docs folder with your own, so you can showcase your work with GitHub Pages 🌍 -->
+User disconnects from room.
 
-<!-- Add a nice image here at the end of the week, showing off your shiny frontend 📸 -->
+>triggered when user disconnects from room (by various reasons)
 
-<!-- Maybe a table of contents here? 📚 -->
+### chat message
 
-<!-- How about a section that describes how to install this project? 🤓 -->
+User sends a message (non-command).
 
-<!-- ...but how does one use this project? What are its features 🤔 -->
+>triggers when user submits input
 
-<!-- What external data source is featured in your project and what are its properties 🌠 -->
+### announcement
 
-<!-- This would be a good place for your data life cycle ♻️-->
-
-<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
-
-<!-- How about a license here? 📜  -->
-
-[rubric]: https://docs.google.com/spreadsheets/d/e/2PACX-1vSd1I4ma8R5mtVMyrbp6PA2qEInWiOialK9Fr2orD3afUBqOyvTg_JaQZ6-P4YGURI-eA7PoHT8TRge/pubhtml
+User-event messages usch as: user triggered commands & user activities (joining & leaving). 
