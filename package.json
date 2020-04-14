@@ -4,7 +4,9 @@
   "description": "Code Support",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart": "link-module-alias",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,23 @@
   "bugs": {
     "url": "https://github.com/WesselSmit/real-time-web-1920/issues"
   },
-  "homepage": "https://github.com/WesselSmit/real-time-web-1920#readme"
+  "homepage": "https://github.com/WesselSmit/real-time-web-1920#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "link-module-alias": "^1.2.0",
+    "moment": "^2.24.0",
+    "path": "^0.12.7",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "_moduleAliases": {
+    "#modules": "modules",
+    "#routes": "routes",
+    "#views": "views",
+    "#public": "public"
+  }
 }
