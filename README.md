@@ -19,3 +19,10 @@ The idea is to use an API to show daily coding related questions, I'm not quite 
 * show daily coding challenges **[can't find an API for this!]**
 * show daily coding tips **[can't find an API for this!]**
 * show daily tweets relating to JS (or even coding/programming in general)
+
+
+### Data Life Cycle
+
+>v1 _(friday April 17th)_
+
+![image](https://user-images.githubusercontent.com/45405413/79559908-d2ee9900-80a6-11ea-80a3-038f475790e6.png)
