@@ -4,25 +4,28 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="./codemirror-5.52.2/lib/codemirror.js"></script>
+	<!-- <script src="./codemirror-5.52.2/lib/codemirror.js"></script>
 	<script src="./codemirror-5.52.2/mode/xml/xml.js"></script>
 	<script src="./codemirror-5.52.2/addon/edit/closetag.js"></script>
-	<link rel="stylesheet" href="./codemirror-5.52.2/theme/dracula.css" type="text/css">
 	<link rel="stylesheet" href="./codemirror-5.52.2/lib/codemirror.css" type="text/css">
+	<link rel="stylesheet" href="./codemirror-5.52.2/theme/dracula.css" type="text/css"> -->
 	<title>Code Exchange</title>
 </head>
 
 <body>
 	<textarea id="editor"><p>I'm a paragraph</p></textarea>
 
-	<script>
+	<!-- <script>
 		const editor = document.getElementById('editor')
 		const sourceCode = CodeMirror.fromTextArea(editor, {
 			mode: "xml",
+			theme: "dracula",
 			lineNumbers: true,
-			autoCloseTag: true
+			autoCloseTags: true
 		})
-	</script>
+	</script> -->
+
+	<script src="./js/main.js"></script>
 </body>
 
 </html>
@@ -30,6 +33,5 @@
 
 <!-- TODO:
 mappenstructuur moet nog gefixt worden: CodeMirror moet in een aparte map in public komen,
-kies een thema voor de editor,
 maak verschillende rooms aan en zorg dat er een is voor hmrl, een voor css, een voor js,
 kijk welke addon's er allemaal zijn en installeer de addons die je nodig hebt (miss is syntax highlighting hiermee ook wel mogelijk?) -->
