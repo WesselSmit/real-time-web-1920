@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/register.css" type="text/css">
+	<title>Code Exchange</title>
+</head>
+
+<body>
+	<main>
+		<article>
+			<h1>Code Exchange</h1>
+
+			<p>a brief explanation about what code exchange entails</p>
+
+			<form action="/register" method="POST">
+				<input type="text" name="username" id="username" placeholder="Enter name" autocomplete="off" required>
+				<label for="username">Username</label>
+
+				<fieldset>
+					<legend>Choose a language</legend>
+
+					<input type="radio" name="room" value="html" id="room_html" required>
+					<label for="room_html">HTML</label>
+
+					<input type="radio" name="room" value="css" id="room_css" required>
+					<label for="room_css">CSS</label>
+
+					<input type="radio" name="room" value="js" id="room_js" required>
+					<label for="room_js">JS</label>
+				</fieldset>
+
+				<input type="submit">
+			</form>
+		</article>
+	</main>
+</body>

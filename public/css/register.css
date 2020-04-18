@@ -1,0 +1,39 @@
+@font-face {
+	font-family: DejaVuSansMono;
+	src: url(../media/fonts/DejaVuSansMono.woff);
+}
+
+@font-face {
+	font-family: DejaVuSansMono-Bold;
+	src: url(../media/fonts/DejaVuSansMono-Bold.woff);
+}
+
+:root {
+	--primary-background-color: #1F201E;
+	--primary-color: #8F97C6;
+	--primary-text-color: #E6E6E6;
+	--header-font: "DejaVuSansMono-Bold", Arial, Helvetica, sans-serif;
+	--body-font: "DejaVuSansMono", Arial, Helvetica, sans-serif;
+}
+
+/* TODO: breek de CSS op in meerdere files en voeg deze samen met gulp, gebruik evt SASS */
+
+body {
+	margin: 0;
+	background-color: var(--primary-color);
+	font-family: var(--body-font);
+	color: var(--primary-text-color);
+}
+
+main {
+	background-color: var(--primary-background-color);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+fieldset {
+	border: 0;
+}

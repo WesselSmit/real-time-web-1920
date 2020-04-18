@@ -11,6 +11,9 @@ const io = socketio(server)
 
 const communicator = require('#modules/communicator')
 
+const router = {
+	login: require('#routes/login')
+}
 
 
 //Set public folder for assets
@@ -23,13 +26,13 @@ communicator(io)
 
 
 //Set template engine & path to template folder
-app.set('views', __dirname + '/src/views')
+app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 
 
 
 
-app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'))
+app.get('/', router.login)
 
 
 
