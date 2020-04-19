@@ -4,38 +4,43 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- <link rel="stylesheet" href="/css/register.css" type="text/css"> -->
 	<link rel="stylesheet" href="/css/master.css" type="text/css">
 	<title>Code Exchange</title>
 </head>
 
-<body>
+<body id="register">
 	<main>
-		<article>
-			<h1 id="welcome">Welcome to <strong>Code Exchange</strong></h1>
+		<article id="register-intro">
+			<h1>Welcome to <strong>Code Exchange</strong></h1>
 
-			<p>a brief explanation about what code exchange entails</p>
+			<form action="/register" method="POST" id="register-login">
 
-			<form action="/register" method="POST">
-				<input type="text" name="username" id="username" placeholder="Enter name" autocomplete="off" required>
-				<label for="username">Username</label>
+				<div id="username-container">
+					<input type="text" name="username" id="username" placeholder="Enter name" autocomplete="off"
+						required>
+					<label for="username">Username</label>
+				</div>
 
 				<fieldset>
 					<legend>Choose a language</legend>
 
-					<input type="radio" name="room" value="html" id="room_html" required>
-					<label for="room_html">HTML</label>
+					<input type="radio" name="room" value="html" id="room-html" required>
+					<label for="room-html">HTML</label>
 
-					<input type="radio" name="room" value="css" id="room_css" required>
-					<label for="room_css">CSS</label>
+					<input type="radio" name="room" value="css" id="room-css" required>
+					<label for="room-css">CSS</label>
 
-					<input type="radio" name="room" value="js" id="room_js" required>
-					<label for="room_js">JS</label>
+					<input type="radio" name="room" value="js" id="room-js" required>
+					<label for="room-js">JS</label>
 				</fieldset>
 
-				<input type="submit">
+				<input type="submit" value="Join">
 			</form>
 		</article>
+
+		<aside id="register-logo">
+			<img src="./media/images/logo_color.svg" alt="Code Exchange Logo">
+		</aside>
 	</main>
 </body>
 
