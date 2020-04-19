@@ -1,6 +1,16 @@
 # Concept
 
-This app allows people to troubleshoot your code, through: pull requests, syntax highlighting & chat help.
+This app allows people to troubleshoot and improve your code, through: pull requests, validation & syntax highlighting. 
+
+It's a platform where programmers can help peers through a real-time connection; all users in the same room can see the host's code (real-time updated). User can reference code which allows them to:
+* mark invalid/jeopardizing code
+* suggest improvements/fixes through pull-requests
+
+It also has core code-editor features to improve the user experience and help identify problems early;
+* syntax highlighting
+* code validation (hinters)
+* beautify
+
 
 ![RTWdesign](https://user-images.githubusercontent.com/45405413/79219333-5cf1f400-7e52-11ea-9e82-ee9950d86d33.png)
 
@@ -13,13 +23,6 @@ The app has  sections:
      * [users] List of users in current room
 
  
-### API
-
-The idea is to use an API to show daily coding related questions, I'm not quite sure which API or idea to go with:
-* show daily coding challenges **[can't find an API for this!]**
-* show daily coding tips **[can't find an API for this!]**
-* show daily tweets relating to JS (or even coding/programming in general)
-
 
 ### Data Life Cycle
 
