@@ -26,7 +26,7 @@ app.use(express.urlencoded({
 	extended: true
 }))
 
-// TODO: inputs in login.ejs moeten NIET required zijn, in clientside JS moet je alleen de "join" button laten zien als er een username & language ingevuld is (de required pop-up is lelijk)
+// TODO: particles (zoals in de codepen) toevoegen, doe dit in clientside JS om de HTML niet lelijk te maken
 
 //Set sockets
 sockets(io)

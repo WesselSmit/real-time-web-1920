@@ -135,6 +135,9 @@ input[type=submit] {
         display: block;
         margin: 50px 30px 0 auto;
         outline: none; }
+        #register main #register-intro input[type=submit].hide {
+          position: absolute;
+          left: -9999px; }
     #register main #register-logo {
       grid-column: 2;
       background-color: #1f201e;

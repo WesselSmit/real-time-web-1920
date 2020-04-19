@@ -17,20 +17,21 @@
 			<form action="/register" method="POST" id="register-login">
 
 				<div id="username-container">
-					<input type="text" name="username" id="username" placeholder="Enter name" autocomplete="off">
+					<input type="text" name="username" id="username" placeholder="Enter name" autocomplete="off"
+						required>
 					<label for="username">Username</label>
 				</div>
 
 				<fieldset>
 					<legend>Choose a language</legend>
 
-					<input type="radio" name="room" value="html" id="room-html">
+					<input type="radio" name="room" value="html" id="room-html" required>
 					<label for="room-html" tabindex="0">HTML</label>
 
-					<input type="radio" name="room" value="css" id="room-css">
+					<input type="radio" name="room" value="css" id="room-css" required>
 					<label for="room-css" tabindex="0">CSS</label>
 
-					<input type="radio" name="room" value="js" id="room-js">
+					<input type="radio" name="room" value="javascript" id="room-js" required>
 					<label for="room-js" tabindex="0">Javascript</label>
 				</fieldset>
 
@@ -42,6 +43,8 @@
 			<img src="./media/images/logo_color.svg" alt="Code Exchange Logo">
 		</aside>
 	</main>
+
+	<script src="/js/register.js"></script>
 </body>
 
 </html>
