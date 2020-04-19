@@ -4,7 +4,9 @@
   "description": "Code Support",
   "main": "index.js",
   "scripts": {
-    "prestart": "link-module-alias",
+    "prestart": "link-module-alias && npm run build:css",
+    "prebuild:css": "rimraf ./public/css",
+    "build:css": "node ./builds/build-css.js",
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
@@ -25,12 +27,16 @@
     "link-module-alias": "^1.2.0",
     "moment": "^2.24.0",
     "path": "^0.12.7",
+    "rimraf": "^3.0.2",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
     "nodemon": "^2.0.3"
   },
   "_moduleAliases": {
+    "#builds": "builds",
     "#modules": "modules",
     "#routes": "routes",
     "#views": "views",

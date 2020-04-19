@@ -9,10 +9,11 @@ const app = express()
 const server = http.createServer(app)
 const io = socketio(server)
 
-const communicator = require('#modules/communicator')
+const sockets = require('#modules/sockets')
 
 const router = {
-	login: require('#routes/login')
+	login: require('#routes/login'),
+	room: require('#routes/room')
 }
 
 
@@ -22,8 +23,7 @@ app.use(express.static(path.join(__dirname + '/public')))
 
 
 //Set sockets
-communicator(io)
-
+sockets(io)
 
 //Set template engine & path to template folder
 app.set('views', __dirname + '/views')
@@ -31,8 +31,9 @@ app.set('view engine', 'ejs')
 
 
 
-
+//Navigation (routes)
 app.get('/', router.login)
+app.post('/register', router.room)
 
 
 

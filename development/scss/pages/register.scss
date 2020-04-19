@@ -1,0 +1,31 @@
+body {
+	margin: 0;
+	background-color: $primary-color;
+	font-family: $body-font;
+	color: $primary-text-color;
+}
+
+main {
+	background-color: $primary-background-color;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
+fieldset {
+	border: 0;
+}
+
+input[type=radio] {
+	position: absolute;
+	left: -9999px;
+}
+
+input[type=radio]+label {
+	display: block;
+	cursor: pointer;
+	border: 2px solid yellow;
+	margin: 5px 0;
+}
