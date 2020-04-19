@@ -1,5 +1,6 @@
 #register {
 	background-color: $secondary-color;
+	overflow: hidden;
 
 
 	main {
@@ -29,7 +30,7 @@
 
 
 				#username-container {
-					// Inspired by https://codepen.io/lucasyem/pen/ZEEYKdj?editors=1100
+					// Credit to https://codepen.io/lucasyem/pen/ZEEYKdj?editors=1100
 					position: relative;
 					padding: 15px 0 0 0;
 					margin-bottom: 30px;

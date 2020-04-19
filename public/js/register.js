@@ -1,3 +1,4 @@
+//Join button show/hide toggle
 const nameInput = document.getElementById('username')
 const languageInput = document.querySelectorAll('input[type=radio]')
 const joinButton = document.querySelector('input[type=submit]')
@@ -26,4 +27,23 @@ function checkIfFormComplete() {
 	} else {
 		joinButton.classList.add('hide')
 	}
+}
+
+
+
+
+
+
+
+//Particles
+const register = document.getElementById('register')
+
+const particleContainer = document.createElement('div')
+particleContainer.id = 'particle-container'
+register.prepend(particleContainer)
+
+for (let i = 0; i < 60; i++) {
+	const div = document.createElement('div')
+	div.classList.add('particle')
+	particleContainer.append(div)
 }
