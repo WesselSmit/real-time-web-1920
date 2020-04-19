@@ -72,7 +72,7 @@ input[type=submit] {
             border-bottom: 2px solid #1f201e;
             padding: 7px 0 0 2px;
             background-color: #8f97c6;
-            font-family: "DejaVuSansMono-Bold", "DejaVuSansMono", Arial, Helvetica, sans-serif;
+            font-family: "DejaVuSansMono", Arial, Helvetica, sans-serif;
             font-size: 16px;
             text-transform: capitalize; }
             #register main #register-intro #register-login #username-container input[type=text]::placeholder {
@@ -87,7 +87,8 @@ input[type=submit] {
               font-size: 12px;
               font-family: "DejaVuSansMono", Arial, Helvetica, sans-serif; }
             #register main #register-intro #register-login #username-container input[type=text]:focus {
-              outline: none; }
+              outline: none;
+              font-family: "DejaVuSansMono-Bold", "DejaVuSansMono", Arial, Helvetica, sans-serif; }
               #register main #register-intro #register-login #username-container input[type=text]:focus ~ input {
                 position: absolute;
                 top: 0;
