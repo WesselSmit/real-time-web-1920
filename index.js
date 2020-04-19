@@ -21,6 +21,12 @@ const router = {
 app.use(express.static(path.join(__dirname + '/public')))
 
 
+//Allow data transfer through URLs
+app.use(express.urlencoded({
+	extended: true
+}))
+
+// TODO: inputs in login.ejs moeten NIET required zijn, in clientside JS moet je alleen de "join" button laten zien als er een username & language ingevuld is (de required pop-up is lelijk)
 
 //Set sockets
 sockets(io)

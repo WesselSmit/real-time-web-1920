@@ -26,17 +26,12 @@ strong {
 input[type=submit] {
   background-color: #1f201e;
   color: #8f97c6;
-  border: 2px solid red;
   font-family: "DejaVuSansMono-Bold", "DejaVuSansMono", Arial, Helvetica, sans-serif;
   font-size: 16px;
   border: 0;
   padding: 5px;
   width: 100px;
   cursor: pointer; }
-  input[type=submit]:hover {
-    background-color: #8f97c6;
-    color: #1f201e;
-    border: 2px solid red; }
 
 #register {
   background-color: #8f97c6; }
@@ -65,18 +60,19 @@ input[type=submit] {
         font-family: "DejaVuSansMono", Arial, Helvetica, sans-serif; }
       #register main #register-intro #register-login #username-container {
         position: relative;
-        padding: 15px 0 0; }
+        padding: 15px 0 0;
+        margin-bottom: 30px; }
         #register main #register-intro #register-login #username-container input[type=text] {
           width: 100%;
-          border: 0;
+          border: none;
           border-bottom: 2px solid #1f201e;
-          font-size: 20px;
+          font-size: 16px;
           padding: 7px 0;
           background-color: #8f97c6; }
           #register main #register-intro #register-login #username-container input[type=text]::placeholder {
             color: transparent; }
           #register main #register-intro #register-login #username-container input[type=text]:placeholder-shown ~ label {
-            font-size: 1.3rem;
+            font-size: 15px;
             cursor: text;
             top: 20px; }
         #register main #register-intro #register-login #username-container label {
@@ -84,12 +80,11 @@ input[type=submit] {
           top: 0;
           display: block;
           transition: 0.2s;
-          font-size: 1rem;
+          font-size: 16px;
           color: #1f201e; }
         #register main #register-intro #register-login #username-container input:focus {
           outline: none;
           padding-bottom: 6px;
-          font-weight: 700;
           border-image: linear-gradient(to right, #1f201e, #1f201e);
           border-image-slice: 1; }
           #register main #register-intro #register-login #username-container input:focus ~ input {
@@ -97,14 +92,9 @@ input[type=submit] {
             top: 0;
             display: block;
             transition: 0.2s;
-            font-size: 1rem;
-            color: #1f201e;
-            font-weight: 700; }
+            font-family: "DejaVuSansMono", Arial, Helvetica, sans-serif; }
         #register main #register-intro #register-login #username-container input:required, #register main #register-intro #register-login #username-container input:invalid {
           box-shadow: none; }
-      #register main #register-intro #register-login input[type=submit] {
-        grid-column: 2 / 2;
-        grid-row: 3 / -1; }
     #register main #register-logo {
       grid-column: 2;
       background-color: #1f201e;

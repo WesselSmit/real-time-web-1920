@@ -35,12 +35,14 @@
 				#username-container {
 					position: relative;
 					padding: 15px 0 0;
+					margin-bottom: 30px;
+
 
 					input[type=text] {
 						width: 100%;
-						border: 0;
+						border: none;
 						border-bottom: 2px solid $primary-color;
-						font-size: 20px;
+						font-size: 16px;
 						padding: 7px 0;
 						background-color: $secondary-color;
 
@@ -49,7 +51,8 @@
 						}
 
 						&:placeholder-shown~label {
-							font-size: 1.3rem;
+							// font-size: 1.3rem;
+							font-size: 15px;
 							cursor: text;
 							top: 20px;
 						}
@@ -60,14 +63,13 @@
 						top: 0;
 						display: block;
 						transition: 0.2s;
-						font-size: 1rem;
+						font-size: 16px;
 						color: $primary-color;
 					}
 
 					input:focus {
 						outline: none;
 						padding-bottom: 6px;
-						font-weight: 700;
 						border-image: linear-gradient(to right, $primary-color, $primary-color);
 						border-image-slice: 1;
 
@@ -77,9 +79,8 @@
 							top: 0;
 							display: block;
 							transition: 0.2s;
-							font-size: 1rem;
-							color: $primary-color;
-							font-weight: 700;
+							font-family: $body-font;
+
 						}
 					}
 
@@ -90,12 +91,6 @@
 							box-shadow: none;
 						}
 					}
-				}
-
-
-				input[type=submit] {
-					grid-column: 2 / 2;
-					grid-row: 3 / -1;
 				}
 			}
 		}
