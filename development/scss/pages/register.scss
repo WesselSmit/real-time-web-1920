@@ -3,6 +3,15 @@
 	overflow: hidden;
 
 
+	#particle-container {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+
+
 	main {
 		@include shadow;
 		@include position-absolute-center;
@@ -158,10 +167,12 @@
 				display: block;
 				margin: 50px 30px 0 auto;
 				outline: none;
+				opacity: 1;
+				transition: opacity 100ms ease;
 
 
 				&.hide {
-					@include hide;
+					opacity: 0;
 				}
 			}
 		}
