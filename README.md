@@ -73,3 +73,4 @@ TODO: general API information (what it does, rate limit, key, register instructi
 
 TODO: data format
 
+[MIT](https://github.com/WesselSmit/real-time-web-1920/blob/master/LICENSE) © [Wessel Smit](https://github.com/WesselSmit)
