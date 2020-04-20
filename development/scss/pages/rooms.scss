@@ -1,0 +1,33 @@
+#room {
+	overflow: hidden;
+
+
+	main {
+		display: grid;
+		grid-template-columns: 1fr 1fr 150px;
+		grid-template-rows: auto 1fr;
+
+
+		section {
+			height: calc(100vh - #{$header-height});
+
+
+			&#code-container {
+				grid-column: 1 / 1;
+				background-color: yellow;
+			}
+
+
+			&#communication-container {
+				grid-column: 2 / 2;
+				background-color: red;
+			}
+		}
+
+
+		#menu-container {
+			grid-column: 3 / 3;
+			background-color: blue;
+		}
+	}
+}

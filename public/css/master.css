@@ -41,12 +41,6 @@ input[type=submit] {
 #register {
   background-color: #8f97c6;
   overflow: hidden; }
-  #register #particle-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0; }
   #register main {
     box-shadow: 0px 5px 20px #1f201e;
     position: absolute;
@@ -158,3 +152,21 @@ input[type=submit] {
         max-width: 150px;
         margin: auto;
         height: 100%; }
+
+#room {
+  overflow: hidden; }
+  #room main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 150px;
+    grid-template-rows: auto 1fr; }
+    #room main section {
+      height: calc(100vh - 30px); }
+      #room main section#code-container {
+        grid-column: 1 / 1;
+        background-color: yellow; }
+      #room main section#communication-container {
+        grid-column: 2 / 2;
+        background-color: red; }
+    #room main #menu-container {
+      grid-column: 3 / 3;
+      background-color: blue; }

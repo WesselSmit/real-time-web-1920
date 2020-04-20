@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/master.css" type="text/css">
+	<link rel="icon" href="/media/images/logo_color.ico" type="image/x-icon" />
+	<title>Code Exchange</title>
+
+	<script src="./libraries/codemirror/lib/codemirror.js"></script>
+	<script src="./libraries/codemirror/mode/xml/xml.js"></script>
+	<script src="./libraries/codemirror/addon/edit/closetag.js"></script>
+
+	<link rel="stylesheet" href="./libraries/codemirror/lib/codemirror.css" type="text/css">
+	<link rel="stylesheet" href="./libraries/codemirror/theme/dracula.css" type="text/css">
+</head>
+
+<body id="room" room-language="html" room-mode="xml">
+	<main>
+		<section id="code-container">
+			<textarea id="editor"></textarea>
+		</section>
+
+		<section id="communication-container">
+			communication container
+		</section>
+
+		<aside id="menu-container">
+			menu container
+		</aside>
+	</main>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/main.js"></script>
+</body>
+
+</html>
