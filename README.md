@@ -28,6 +28,7 @@ The app has  sections:
 To install this application follow these steps:
 
 Clone the repo
+
 ```shell
 git clone https://github.com/WesselSmit/real-time-web-1920.git
 ```
@@ -55,3 +56,20 @@ npm start
 >v2.1 _(monday April 20th)_
 
 ![image](https://user-images.githubusercontent.com/45405413/79755431-66c79b80-8319-11ea-8a07-0bc2b11b122e.png)
+
+
+# Real-Time Events
+
+List of all custom events:
+
+
+* 
+* 
+* 
+
+# External API
+
+TODO: general API information (what it does, rate limit, key, register instructions etc.)
+
+TODO: data format
+
