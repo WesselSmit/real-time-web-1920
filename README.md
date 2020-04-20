@@ -26,6 +26,6 @@ The app has  sections:
 
 ### Data Life Cycle
 
->v1 _(friday April 17th)_
+>v2.1 _(monday April 20th)_
 
-![image](https://user-images.githubusercontent.com/45405413/79559908-d2ee9900-80a6-11ea-80a3-038f475790e6.png)
+![image](https://user-images.githubusercontent.com/45405413/79755259-223c0000-8319-11ea-859c-5f8057ecadba.png)
