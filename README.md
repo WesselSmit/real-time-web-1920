@@ -53,10 +53,9 @@ npm start
 
 # Data Life Cycle
 
->v2.1 _(monday April 20th)_
+>v2.2 _(monday April 20th)_
 
-![image](https://user-images.githubusercontent.com/45405413/79755431-66c79b80-8319-11ea-8a07-0bc2b11b122e.png)
-
+![image](https://user-images.githubusercontent.com/45405413/79784341-6263a880-8342-11ea-93ff-88a7ede015f5.png)
 
 # Real-Time Events
 
