@@ -1,0 +1,13 @@
+@keyframes logo-pulsing {
+
+	0%,
+	100% {
+		transform: scale(.8);
+		opacity: .8;
+	}
+
+	50% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}

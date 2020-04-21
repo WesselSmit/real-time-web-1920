@@ -3,6 +3,21 @@
 	overflow: hidden;
 
 
+	#particle-container {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: -10;
+
+
+		.particle {
+			position: fixed;
+		}
+	}
+
+
 	main {
 		@include shadow;
 		@include position-absolute-center;
@@ -183,6 +198,7 @@
 				max-width: 150px;
 				margin: auto;
 				height: 100%;
+				animation: logo-pulsing 15000ms linear infinite;
 			}
 		}
 	}

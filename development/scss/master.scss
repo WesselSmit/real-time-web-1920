@@ -3,5 +3,8 @@
 @import "global/mixins";
 @import "global/styles";
 
+@import "animations/particles";
+@import "animations/logo-pulsing";
+
 @import "pages/register";
 @import "pages/rooms";
