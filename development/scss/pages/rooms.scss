@@ -4,30 +4,99 @@
 
 	main {
 		display: grid;
-		grid-template-columns: 1fr 1fr 150px;
+		grid-template-columns: 1fr 1fr 200px;
 		grid-template-rows: auto 1fr;
 
 
 		section {
-			height: calc(100vh - #{$header-height});
+			height: 100vh;
+			background-color: $primary-color;
 
 
 			&#code-container {
 				grid-column: 1 / 1;
-				background-color: yellow;
 			}
 
 
 			&#communication-container {
 				grid-column: 2 / 2;
-				background-color: red;
 			}
 		}
 
 
 		#menu-container {
 			grid-column: 3 / 3;
-			background-color: blue;
+			background-color: $primary-color;
+			background-color: black;
+
+
+			#branding-container {
+				max-height: 30px;
+				height: 30px;
+				display: grid;
+				grid-template-columns: 30px 1fr;
+				margin-bottom: 20px;
+
+
+				img {
+					grid-column: 1 / 1;
+					max-height: 18px;
+					justify-self: center;
+					align-self: center;
+				}
+
+
+				h1 {
+					grid-column: 2 / 3;
+					color: $secondary-color;
+					margin: 0;
+					font-size: 20px;
+					justify-self: start;
+					align-self: center;
+					font-family: $body-font;
+				}
+			}
+
+
+			#rooms-container,
+			#users-container {
+				padding: 10px 25px;
+				width: 100%;
+				margin-bottom: 20px;
+
+
+				h2 {
+					margin: 0;
+					font-size: 16px;
+				}
+
+
+				ul {
+					margin: 0;
+					padding-left: 20px;
+
+
+					li {
+						list-style-type: none;
+						display: block;
+						width: 130px;
+						position: relative;
+
+
+						&::before {
+							content: "";
+							background-image: url(../media/images/item-icon-color.svg);
+							background-repeat: no-repeat;
+							background-position: center;
+							padding: 1px 15px;
+							position: absolute;
+							left: -40px;
+							height: 20px;
+							width: 20px;
+						}
+					}
+				}
+			}
 		}
 	}
 }

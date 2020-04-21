@@ -43,7 +43,7 @@ particleContainer.id = 'particle-container'
 register.prepend(particleContainer)
 
 for (let i = 0; i < 60; i++) {
-	const div = document.createElement('div')
-	div.classList.add('particle')
-	particleContainer.append(div)
+	const ins = document.createElement('ins')
+	ins.classList.add('particle')
+	particleContainer.append(ins)
 }

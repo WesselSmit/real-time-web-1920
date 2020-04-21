@@ -6,6 +6,7 @@ const sourceCode = CodeMirror.fromTextArea(editor, {
 	mode,
 	theme: "dracula",
 	lineNumbers: true,
+	lineWrapping: true,
 	autoCloseTags: true
 })
 
