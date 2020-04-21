@@ -21,11 +21,55 @@ The app has  sections:
 * [right] Navigation & info
      * [rooms] List of available rooms (available coding/programming languages)
      * [users] List of users in current room
+     
 
+# Install Notes
+
+To install this application follow these steps:
+
+Clone the repo
+
+```shell
+git clone https://github.com/WesselSmit/real-time-web-1920.git
+```
+
+Navigate to the local repo 
+
+```shell
+cd real-time-web-1920
+```
  
+Install all dependencies
 
-### Data Life Cycle
+```shell
+npm install
+```
 
->v2.1 _(monday April 20th)_
+Run the application
 
-![image](https://user-images.githubusercontent.com/45405413/79755431-66c79b80-8319-11ea-8a07-0bc2b11b122e.png)
+```shell
+npm start
+```
+
+# Data Life Cycle
+
+>v2.2 _(monday April 20th)_
+
+![image](https://user-images.githubusercontent.com/45405413/79784341-6263a880-8342-11ea-93ff-88a7ede015f5.png)
+
+# Real-Time Events
+
+List of all custom events:
+
+
+* 
+* 
+* 
+
+# External API
+
+TODO: general API information (what it does, rate limit, key, register instructions etc.)
+
+TODO: data format
+
+[MIT](https://github.com/WesselSmit/real-time-web-1920/blob/master/LICENSE) © [Wessel Smit](https://github.com/WesselSmit)
