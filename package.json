@@ -24,6 +24,8 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
     "link-module-alias": "^1.2.0",
     "moment": "^2.24.0",
     "path": "^0.12.7",
@@ -31,8 +33,6 @@
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2",
     "nodemon": "^2.0.3"
   },
   "_moduleAliases": {
