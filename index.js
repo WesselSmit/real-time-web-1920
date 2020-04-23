@@ -26,7 +26,7 @@ app.use(express.urlencoded({
 	extended: true
 }))
 
-// TODO: particles (zoals in de codepen) toevoegen, doe dit in clientside JS om de HTML niet lelijk te maken
+// TODO: verwerk in het login scherm een mogelijkheid om te joinen/hosten (zie notitieboek)
 
 //Set sockets
 sockets(io)
