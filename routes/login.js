@@ -1,3 +1,11 @@
+const data = require('#modules/data')
+
 module.exports = (req, res) => {
-	res.render('login')
+	const rooms = data.getRooms()
+
+	console.log('rooms: ', rooms)
+
+	res.render('login', {
+		rooms
+	})
 }

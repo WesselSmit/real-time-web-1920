@@ -1,32 +1,15 @@
-//Join button show/hide toggle
-const nameInput = document.getElementById('username')
-const languageInput = document.querySelectorAll('input[type=radio]')
-const joinButton = document.querySelector('input[type=submit]')
+//Create particles for BG animation
+const register = document.getElementById('register')
+const particleContainer = document.createElement('div')
 
-const registerInputs = [nameInput, ...languageInput]
-registerInputs.forEach(input => {
-	input.addEventListener('input', () => checkIfFormComplete())
-	input.removeAttribute('required')
-})
+particleContainer.id = 'particle-container'
+register.prepend(particleContainer)
 
+for (let i = 0; i < 60; i++) {
+	const ins = document.createElement('ins')
 
-joinButton.classList.add('hide')
-
-
-function checkIfFormComplete() {
-	let languageSelected = false
-
-	languageInput.forEach(input => {
-		if (input.checked) {
-			languageSelected = true
-		}
-	})
-
-	if (languageSelected && nameInput.value) {
-		joinButton.classList.remove('hide')
-	} else {
-		joinButton.classList.add('hide')
-	}
+	ins.classList.add('particle')
+	particleContainer.append(ins)
 }
 
 
@@ -34,16 +17,18 @@ function checkIfFormComplete() {
 
 
 
+//Toggle between join-/create room interface
+const joinInterface = document.getElementById('register-join')
+const hostInterface = document.getElementById('register-host')
 
-//Particles
-const register = document.getElementById('register')
+const roleContainer = document.getElementById('role-container')
+const joinRoom = document.getElementById('join-role')
+const createRoom = document.getElementById('host-role')
 
-const particleContainer = document.createElement('div')
-particleContainer.id = 'particle-container'
-register.prepend(particleContainer)
+joinRoom.addEventListener('change', toggleInterface)
+createRoom.addEventListener('change', toggleInterface)
 
-for (let i = 0; i < 60; i++) {
-	const ins = document.createElement('ins')
-	ins.classList.add('particle')
-	particleContainer.append(ins)
+function toggleInterface() {
+	joinInterface.classList.toggle('hide')
+	hostInterface.classList.toggle('hide')
 }

@@ -14,28 +14,71 @@
 		<article id="register-intro">
 			<h1>Welcome to <strong>Code Exchange</strong></h1>
 
-			<form action="/register" method="POST" id="register-login">
+			<div id="role-container">
+				<p id="role-intro">Join or create a room</p>
+
+				<input type="radio" name="role" value="join" id="join-role" tabindex="-1" checked>
+				<label for="join-role" tabindex="0">Join</label>
+
+				<input type="radio" name="role" value="host" id="host-role" tabindex="-1">
+				<label for="host-role" tabindex="0">Create</label>
+			</div>
+
+
+			<form action="/join" method="POST" id="register-join">
 
 				<div id="username-container">
-					<input type="text" name="username" id="username" placeholder="Enter name" autocomplete="off"
+					<input type="text" name="username" id="username-join" placeholder="Enter name" autocomplete="off"
 						required>
-					<label for="username">Username</label>
+					<label for="username-join">Username</label>
+				</div>
+
+				<fieldset id="">
+					<legend>Choose a room</legend>
+
+					<% if (locals.rooms && locals.rooms.length > 0) { %>
+					<% rooms.forEach(room => { %>
+					<input type="radio" name="room" value="<%= room.name %>" id="room-<%= room.name %>" tabindex="-1"
+						required>
+					<label for="room-<%= room.name %>" tabindex="0"><%= room.name %></label>
+					<% }) } else { %>
+					<p class="no-rooms-warning">No rooms available currently...</p>
+					<p class="no-rooms-warning">Be the first to host a room!</p>
+					<% } %>
+				</fieldset>
+
+				<input type="submit" value="Join">
+			</form>
+
+
+			<form action="/host" method="POST" id="register-host" class="hide">
+
+				<div id="username-container">
+					<input type="text" name="username" id="username-host" placeholder="Enter name" autocomplete="off"
+						required>
+					<label for="username-host">Username</label>
+				</div>
+
+				<div id="roomname-container">
+					<input type="text" name="roomname" id="roomname" placeholder="Enter name" autocomplete="off"
+						required>
+					<label for="roomname">Roomname</label>
 				</div>
 
 				<fieldset>
 					<legend>Choose a language</legend>
 
-					<input type="radio" name="room" value="html" id="room-html" tabindex="-1" required>
-					<label for="room-html" tabindex="0">HTML</label>
+					<input type="radio" name="language" value="html" id="language-html" tabindex="-1" required>
+					<label for="language-html" tabindex="0">HTML</label>
 
-					<input type="radio" name="room" value="css" id="room-css" tabindex="-1" required>
-					<label for="room-css" tabindex="0">CSS</label>
+					<input type="radio" name="language" value="css" id="language-css" tabindex="-1" required>
+					<label for="language-css" tabindex="0">CSS</label>
 
-					<input type="radio" name="room" value="javascript" id="room-js" tabindex="-1" required>
-					<label for="room-js" tabindex="0">Javascript</label>
+					<input type="radio" name="language" value="javascript" id="language-js" tabindex="-1" required>
+					<label for="language-js" tabindex="0">Javascript</label>
 				</fieldset>
 
-				<input type="submit" value="Join">
+				<input type="submit" value="Create">
 			</form>
 		</article>
 
@@ -44,6 +87,7 @@
 		</aside>
 	</main>
 
+	<script src="/socket.io/socket.io.js"></script>
 	<script src="/js/register.js"></script>
 </body>
 

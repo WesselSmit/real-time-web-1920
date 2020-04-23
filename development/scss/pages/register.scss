@@ -38,14 +38,69 @@
 			h1 {
 				font-family: $body-font;
 				color: $primary-color;
+				margin-top: 0;
 			}
 
 
-			#register-login {
+			#role-container {
+				margin: 0 0 30px 30px;
+
+
+				#role-intro {
+					color: $primary-color;
+					margin: 0 0 10px 0;
+				}
+
+
+				input[type=radio] {
+					@include hide;
+
+
+					&:checked+label {
+						font-family: $header-font;
+						border-bottom: 2px solid $primary-color;
+					}
+
+
+					&:not(:checked)+label {
+						text-decoration: line-through;
+
+
+						&:hover+label {
+							font-family: $header-font;
+						}
+					}
+				}
+
+
+				input[type=radio]+label {
+					cursor: pointer;
+					margin: 5px 0;
+					outline: none;
+					color: $primary-color;
+					font-family: $body-font;
+
+
+					&:first-of-type {
+						margin-right: 50px;
+						margin-left: 30px;
+					}
+				}
+			}
+
+
+			#register-join,
+			#register-host {
 				padding-left: 30px;
 
 
-				#username-container {
+				&.hide {
+					@include hide;
+				}
+
+
+				#username-container,
+				#roomname-container {
 					// Credit to https://codepen.io/lucasyem/pen/ZEEYKdj?editors=1100
 					position: relative;
 					padding: 15px 0 0 0;
@@ -75,6 +130,11 @@
 							top: 20px;
 							padding-left: 4px;
 							opacity: .75;
+
+
+							&::before {
+								content: "Enter ";
+							}
 						}
 
 
@@ -128,6 +188,7 @@
 
 				legend {
 					margin-bottom: 5px;
+					padding-left: 0;
 				}
 
 
@@ -167,12 +228,24 @@
 						background-image: url(../media/images/filled-item-icon.svg);
 					}
 				}
+
+
+				.no-rooms-warning {
+					margin: 5px 0;
+					font-size: 12px;
+					font-family: $header-font;
+
+
+					&:last-of-type {
+						margin-bottom: 20px;
+					}
+				}
 			}
 
 
 			input[type=submit] {
 				display: block;
-				margin: 50px 30px 0 auto;
+				margin-left: auto;
 				outline: none;
 				opacity: 1;
 				transition: opacity 100ms ease;

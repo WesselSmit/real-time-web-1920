@@ -13,7 +13,8 @@ const sockets = require('#modules/sockets')
 
 const router = {
 	login: require('#routes/login'),
-	room: require('#routes/room')
+	join: require('#routes/join'),
+	host: require('#routes/host')
 }
 
 
@@ -26,7 +27,8 @@ app.use(express.urlencoded({
 	extended: true
 }))
 
-// TODO: verwerk in het login scherm een mogelijkheid om te joinen/hosten (zie notitieboek)
+// TODO: rooms op register-join page moeten updaten wanneer er een nieuwe room aangemaakt word (sockets)
+// TODO: register join/create buttons moeten dynamisch verstopt/getoond worden
 
 //Set sockets
 sockets(io)
@@ -39,7 +41,8 @@ app.set('view engine', 'ejs')
 
 //Navigation (routes)
 app.get('/', router.login)
-app.post('/register', router.room)
+app.post('/join', router.join)
+app.post('/host', router.host)
 
 
 
