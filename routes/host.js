@@ -7,6 +7,10 @@ module.exports = (req, res) => {
 
 	data.addRoom(room, language, user)
 
+	data.joinRoom(room, user)
+
+	console.log('all users in room:', data.getUsersInRoom(room))
+
 	//TODO: render + join the created room
-	console.log("TODO: join the room you've created")
+	// console.log("TODO: join the room you've created")
 }

@@ -1,10 +1,15 @@
+const data = require('#modules/data')
+
 module.exports = (req, res) => {
-	// const user = req.body.username
-	// const room = req.body.room
-	// const language = req.body.language
+	const room = req.body.room
+	const user = req.body.username
 
-	//TODO: render + join the selected room
-	console.log("TODO: join the room you selected")
+	data.joinRoom(room, user)
 
+	console.log('all users in room:', data.getUsersInRoom(room))
+	console.log('host of room:', data.getRoomhost(room))
+
+
+	//TODO: render + join the created room
 	// res.render(`${room}`)
 }

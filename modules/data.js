@@ -3,8 +3,11 @@ const data = {
 }
 
 module.exports = {
-	addRoom: (room, language, user) => addRoom(room, language, user),
-	getRooms: () => getRooms()
+	addRoom,
+	getRooms,
+	joinRoom,
+	getUsersInRoom,
+	getRoomhost
 }
 
 
@@ -25,4 +28,36 @@ function addRoom(room, language, user) {
 //Get all existing rooms from data
 function getRooms() {
 	return data.rooms
+}
+
+
+//Let user join passed room
+function joinRoom(roomName, user) {
+	const matchingRoom = findRoomWithName(roomName)
+
+	matchingRoom.users.push(user)
+	return matchingRoom.users
+}
+
+
+//Get all users in passed room
+function getUsersInRoom(roomName) {
+	const matchingRoom = findRoomWithName(roomName)
+	return matchingRoom.users
+}
+
+
+//Get host of passed room
+function getRoomhost(roomName) {
+	const matchingRoom = findRoomWithName(roomName)
+	return matchingRoom.host
+}
+
+
+
+
+
+//Helper functions
+function findRoomWithName(name) {
+	return data.rooms.find(room => room.name === name)
 }
