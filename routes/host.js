@@ -6,11 +6,15 @@ module.exports = (req, res) => {
 	const user = req.body.username
 
 	data.addRoom(room, language, user)
-
 	data.joinRoom(room, user)
 
-	console.log('all users in room:', data.getUsersInRoom(room))
+	const users = data.getUsersInRoom(room)
+	const rooms = data.getRooms()
+	const info = {
+		users,
+		rooms,
+		roomName: room
+	}
 
-	//TODO: render + join the created room
-	// console.log("TODO: join the room you've created")
+	res.render(`${language}`, info)
 }

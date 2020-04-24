@@ -29,6 +29,7 @@ app.use(express.urlencoded({
 
 // TODO: rooms op register-join page moeten updaten wanneer er een nieuwe room aangemaakt word (sockets)
 // TODO: register join/create buttons moeten dynamisch verstopt/getoond worden
+// TODO: give focus to name-input of current register interface
 
 //Set sockets
 sockets(io)

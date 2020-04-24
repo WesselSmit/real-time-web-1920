@@ -38,10 +38,16 @@ function toggleInterface() {
 //Determine what interface to show
 const availableRooms = joinInterface.getElementsByClassName('availableRoom')
 
-if (!availableRooms.length > 0) {
-	joinInterface.classList.toggle('hide')
-	hostInterface.classList.toggle('hide')
+if (!availableRooms.length > 0) { //No rooms available => show create-room interface
+	joinInterface.classList.add('hide')
+	hostInterface.classList.remove('hide')
 
 	joinRoom.checked = false
 	createRoom.checked = true
+} else {
+	joinInterface.classList.remove('hide')
+	hostInterface.classList.add('hide')
+
+	joinRoom.checked = true
+	createRoom.checked = false
 }

@@ -7,7 +7,8 @@ module.exports = {
 	getRooms,
 	joinRoom,
 	getUsersInRoom,
-	getRoomhost
+	getRoomHost,
+	getRoomLanguage
 }
 
 
@@ -48,11 +49,17 @@ function getUsersInRoom(roomName) {
 
 
 //Get host of passed room
-function getRoomhost(roomName) {
+function getRoomHost(roomName) {
 	const matchingRoom = findRoomWithName(roomName)
 	return matchingRoom.host
 }
 
+
+//Get language of passed room
+function getRoomLanguage(roomName) {
+	const matchingRoom = findRoomWithName(roomName)
+	return matchingRoom.language
+}
 
 
 
