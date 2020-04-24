@@ -10,10 +10,12 @@ module.exports = (req, res) => {
 
 	const users = data.getUsersInRoom(room)
 	const rooms = data.getRooms()
+	const host = data.getRoomHost(room)
 	const info = {
 		users,
 		rooms,
-		roomName: room
+		roomName: room,
+		host
 	}
 
 	res.render(`${language}`, info)

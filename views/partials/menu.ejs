@@ -1,0 +1,36 @@
+<aside id="menu-container">
+	<div id="branding-container">
+		<img src="./media/images/logo_color.svg" alt="Code Exchange Logo">
+		<h1>Code Exchange</h1>
+	</div>
+
+	<article id="rooms-container">
+		<h2>Rooms</h2>
+
+		<ul id="rooms-list">
+			<% if (locals.rooms && locals.rooms.length > 0) { %>
+			<% rooms.forEach(room => { %>
+			<% if (locals.host && room.name === roomName) { %>
+			<li class="current-room"><%= room.name %></li>
+			<% } else { %>
+			<li><%= room.name %></li>
+			<% } %>
+			<% }) } %>
+		</ul>
+	</article>
+
+	<article id="users-container">
+		<h2>Users in room</h2>
+
+		<ul id="users-list">
+			<% if (locals.users && locals.users.length > 0) { %>
+			<% users.forEach(user => { %>
+			<% if (locals.host && user === host) { %>
+			<li class="user-host"><%= user %></li>
+			<% } else { %>
+			<li><%= user %></li>
+			<% } %>
+			<% }) } %>
+		</ul>
+	</article>
+</aside>

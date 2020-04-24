@@ -26,32 +26,7 @@
 			communication container
 		</section>
 
-		<aside id="menu-container">
-			<div id="branding-container">
-				<img src="./media/images/logo_color.svg" alt="Code Exchange Logo">
-				<h1>Code Exchange</h1>
-			</div>
-
-			<article id="rooms-container">
-				<h2>Rooms</h2>
-
-				<ul id="rooms-list">
-					<li>room</li>
-					<li>room</li>
-					<li>room</li>
-				</ul>
-			</article>
-
-			<article id="users-container">
-				<h2>Users</h2>
-
-				<ul id="users-list">
-					<li>user</li>
-					<li>user</li>
-					<li>Wessel Rogier Smit</li>
-				</ul>
-			</article>
-		</aside>
+		<%- include('partials/menu') %>
 	</main>
 
 	<script src="/socket.io/socket.io.js"></script>
