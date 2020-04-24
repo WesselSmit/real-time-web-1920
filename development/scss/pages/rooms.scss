@@ -15,11 +15,13 @@
 
 			&#code-container {
 				grid-column: 1 / 1;
+				background-color: $editor-background-color;
 			}
 
 
 			&#communication-container {
 				grid-column: 2 / 2;
+				background-color: $communication-background-color;
 			}
 		}
 
@@ -27,7 +29,6 @@
 		#menu-container {
 			grid-column: 3 / 3;
 			background-color: $primary-color;
-			background-color: black;
 
 
 			#branding-container {
