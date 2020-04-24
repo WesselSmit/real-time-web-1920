@@ -175,6 +175,12 @@
 						color: $primary-color;
 					}
 				}
+
+
+				#roomname-container input[type=text],
+				#roomname+label {
+					text-transform: none
+				}
 			}
 
 
