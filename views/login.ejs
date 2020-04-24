@@ -39,7 +39,7 @@
 					<% if (locals.rooms && locals.rooms.length > 0) { %>
 					<% rooms.forEach(room => { %>
 					<input type="radio" name="room" value="<%= room.name %>" id="room-<%= room.name %>" tabindex="-1"
-						required>
+						class="availableRoom" required>
 					<label for="room-<%= room.name %>" tabindex="0"><%= room.name %></label>
 					<% }) } else { %>
 					<p class="no-rooms-warning">No rooms available currently...</p>

@@ -15,12 +15,10 @@ for (let i = 0; i < 60; i++) {
 
 
 
-
-
-//Toggle between join-/create room interface
 const joinInterface = document.getElementById('register-join')
 const hostInterface = document.getElementById('register-host')
 
+//Toggle between join-/create room interface
 const roleContainer = document.getElementById('role-container')
 const joinRoom = document.getElementById('join-role')
 const createRoom = document.getElementById('host-role')
@@ -31,4 +29,19 @@ createRoom.addEventListener('change', toggleInterface)
 function toggleInterface() {
 	joinInterface.classList.toggle('hide')
 	hostInterface.classList.toggle('hide')
+}
+
+
+
+
+
+//Determine what interface to show
+const availableRooms = joinInterface.getElementsByClassName('availableRoom')
+
+if (!availableRooms.length > 0) {
+	joinInterface.classList.toggle('hide')
+	hostInterface.classList.toggle('hide')
+
+	joinRoom.checked = false
+	createRoom.checked = true
 }
