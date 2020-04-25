@@ -26,7 +26,12 @@
 			<% if (locals.users && locals.users.length > 0) { %>
 			<% users.forEach(user => { %>
 			<% if (locals.host && user === host) { %>
+			<% if (user === username) { %>
+			<li class="user-host" id="loggedInUser"><%= user %></li>
+			<% } else { %>
 			<li class="user-host"><%= user %></li>
+			<% } } else if (user === username) { %>
+			<li id="loggedInUser"><%= user %></li>
 			<% } else { %>
 			<li><%= user %></li>
 			<% } %>

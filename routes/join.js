@@ -12,6 +12,7 @@ module.exports = (req, res) => {
 	const rooms = data.getRooms()
 	const host = data.getRoomHost(room)
 	const info = {
+		username: user,
 		users,
 		rooms,
 		roomName: room,

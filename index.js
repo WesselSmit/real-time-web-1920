@@ -27,9 +27,8 @@ app.use(express.urlencoded({
 	extended: true
 }))
 
-// TODO: rooms op register-join page moeten updaten wanneer er een nieuwe room aangemaakt word (sockets)
-// TODO: register join/create buttons moeten dynamisch verstopt/getoond worden
-// TODO: give focus to name-input of current register interface
+// TODO: join room gebeurt nu al in register maar moet dit niet pas op de pagina zelf op het 'connection' event?
+// todo:       ^ zie de YT socketio tutorial over hoe je meerdere rooms kan implementeren
 
 //Set sockets
 sockets(io)
