@@ -7,35 +7,12 @@
 	<article id="rooms-container">
 		<h2>Rooms</h2>
 
-		<ul id="rooms-list">
-			<% if (locals.rooms && locals.rooms.length > 0) { %>
-			<% rooms.forEach(room => { %>
-			<% if (locals.host && room.name === roomName) { %>
-			<li class="current-room"><%= room.name %></li>
-			<% } else { %>
-			<li><%= room.name %></li>
-			<% } %>
-			<% }) } %>
-		</ul>
+		<ul id="rooms-list"></ul>
 	</article>
 
 	<article id="users-container">
 		<h2>Users in room</h2>
 
-		<ul id="users-list">
-			<% if (locals.users && locals.users.length > 0) { %>
-			<% users.forEach(user => { %>
-			<% if (locals.host && user === host) { %>
-			<% if (user === username) { %>
-			<li class="user-host" id="loggedInUser"><%= user %></li>
-			<% } else { %>
-			<li class="user-host"><%= user %></li>
-			<% } } else if (user === username) { %>
-			<li id="loggedInUser"><%= user %></li>
-			<% } else { %>
-			<li><%= user %></li>
-			<% } %>
-			<% }) } %>
-		</ul>
+		<ul id="users-list"></ul>
 	</article>
 </aside>

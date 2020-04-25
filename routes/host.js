@@ -1,4 +1,4 @@
-const data = require('#modules/data')
+const data = require("#modules/data")
 
 module.exports = (req, res) => {
 	const room = req.body.roomname
@@ -6,7 +6,7 @@ module.exports = (req, res) => {
 	const user = req.body.username
 
 	data.addRoom(room, language, user)
-	data.joinRoom(room, user)
+	// data.joinRoom(room, user)
 
 	const users = data.getUsersInRoom(room)
 	const rooms = data.getRooms()
@@ -16,7 +16,7 @@ module.exports = (req, res) => {
 		users,
 		rooms,
 		roomName: room,
-		host
+		host,
 	}
 
 	res.render(`${language}`, info)

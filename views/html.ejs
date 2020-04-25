@@ -16,7 +16,11 @@
 	<link rel="stylesheet" href="./libraries/codemirror/theme/dracula.css" type="text/css">
 </head>
 
-<body id="room" room-language="html" room-mode="xml">
+<body id="room">
+
+	<input type="hidden" id="info" room-language="html" room-mode="xml" room-name="<%= roomName %>"
+		user-name="<%= username %>" host-name="<%= host %>">
+
 	<main>
 		<section id="code-container">
 			<textarea id="editor"><!-- Type your HTML code here... --></textarea>
