@@ -17,7 +17,7 @@ export function updateRoomList(rooms, currentRoom) {
 
 
 //Update list of all users
-export function updateUsersList(users, currentUser) {
+export function updateUsersList(users, currentUser, host) {
 	const userList = document.getElementById('users-list')
 
 	removeList(userList)
@@ -29,6 +29,11 @@ export function updateUsersList(users, currentUser) {
 
 		if (user.name === currentUser) {
 			li.classList.add('current-user')
+		}
+
+		if (user.name === host) {
+			li.classList.add('host')
+			li.innerHTML = li.textContent + "<span>" + "(host)</span>"
 		}
 	})
 }

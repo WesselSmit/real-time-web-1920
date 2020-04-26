@@ -113,6 +113,12 @@
 								background-color: $secondary-color;
 							}
 						}
+
+
+						&.host span {
+							font-style: italic;
+							font-size: 12px;
+						}
 					}
 				}
 			}

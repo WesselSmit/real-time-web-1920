@@ -43,7 +43,7 @@ sourceCode.on('change', utils.debounce(editor => {
 
 
 
-
+console.log("host:", info.host)
 
 
 //Receiving socket events:
@@ -53,4 +53,4 @@ socket.on('room-list', rooms => update.updateRoomList(rooms, info.room))
 
 
 //Update users
-socket.on('user-list', users => update.updateUsersList(users, info.user))
+socket.on('user-list', users => update.updateUsersList(users, info.user, info.host))
