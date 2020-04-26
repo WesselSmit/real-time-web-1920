@@ -1,53 +1,60 @@
-import * as utils from "./modules/utils.mjs"
+import * as utils from './modules/utils.mjs'
 
 const socket = io()
 
-const docInfo = document.getElementById("info")
-const user = docInfo.getAttribute("user-name")
-const room = docInfo.getAttribute("room-name")
-const host = docInfo.getAttribute("host-name")
-const language = docInfo.getAttribute("room-language")
-const mode = docInfo.getAttribute("room-mode")
+//
+const docInfo = document.getElementById('info')
 const info = {
-	user,
-	room,
-	host,
-	language,
-	mode
+	user: docInfo.getAttribute('user-name'),
+	room: docInfo.getAttribute('room-name'),
+	host: docInfo.getAttribute('host-name'),
+	language: docInfo.getAttribute('room-language'),
+	mode: docInfo.getAttribute('room-mode')
 }
 
+//Init CodeMirror instance and set options
+const editor = document.getElementById('editor')
+const sourceCode = CodeMirror.fromTextArea(editor, {
+	mode: info.mode,
+	theme: 'dracula',
+	lineNumbers: true,
+	lineWrapping: true,
+	autoCloseTags: true,
+})
+const debounceTime = 250
 
 
 
 
-//Socket events:
+
+
+//Emitting socket events:
 
 //Join the room
 socket.emit('join-room', info)
 
 
+//Update source-code
+sourceCode.on('change', utils.debounce(editor => {
+	const editorCode = editor.getValue()
+	console.log(editor, editorCode)
+}, debounceTime))
 
 
 
 
 
-const editor = document.getElementById("editor")
-// const mode = document.querySelector('[room-mode]').getAttribute('room-mode')
 
-const sourceCode = CodeMirror.fromTextArea(editor, {
-	mode,
-	theme: "dracula",
-	lineNumbers: true,
-	lineWrapping: true,
-	autoCloseTags: true,
+
+//Receiving socket events:
+
+//Update rooms
+socket.on('room-list', list => {
+	console.log("room-list:", list)
 })
 
-const debounceTime = 250
 
-sourceCode.on(
-	"change",
-	utils.debounce(editor => {
-		const editorCode = editor.getValue()
-		console.log(editor, editorCode)
-	}, debounceTime)
-)
+//Update users
+socket.on('user-list', list => {
+	console.log("user-list:", list)
+})
