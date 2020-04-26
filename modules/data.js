@@ -6,7 +6,9 @@ module.exports = {
 	addRoom,
 	getRooms,
 	joinRoom,
+	leaveRoom,
 	getUsersInRoom,
+	getJoinedRoom,
 	getRoomHost,
 	getRoomLanguage
 }
@@ -33,11 +35,24 @@ function getRooms() {
 
 
 //Let user join passed room
-function joinRoom(roomName, user) {
+function joinRoom(roomName, user, id) {
+	const matchingRoom = findRoomWithName(roomName)
+	const userObj = {
+		name: user,
+		id
+	}
+
+	matchingRoom.users.push(userObj)
+	return matchingRoom.users
+}
+
+
+//Let user leave passed room
+function leaveRoom(roomName, id) {
 	const matchingRoom = findRoomWithName(roomName)
 
-	matchingRoom.users.push(user)
-	return matchingRoom.users
+	const index = matchingRoom.users.findIndex(user => user.id === id)
+	return matchingRoom.users.splice(index, 1)
 }
 
 
@@ -45,6 +60,24 @@ function joinRoom(roomName, user) {
 function getUsersInRoom(roomName) {
 	const matchingRoom = findRoomWithName(roomName)
 	return matchingRoom.users
+}
+
+
+//Get room the user has joined
+function getJoinedRoom(id) {
+	const rooms = data.rooms
+	let matchedRoom
+
+	rooms.forEach(room => {
+		const users = room.users
+		users.forEach(user => {
+			if (user.id === id) {
+				matchedRoom = room
+			}
+		})
+	})
+
+	return matchedRoom.name
 }
 
 

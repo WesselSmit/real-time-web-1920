@@ -1,8 +1,8 @@
+import * as update from './modules/update.mjs'
 import * as utils from './modules/utils.mjs'
 
 const socket = io()
 
-//
 const docInfo = document.getElementById('info')
 const info = {
 	user: docInfo.getAttribute('user-name'),
@@ -49,12 +49,8 @@ sourceCode.on('change', utils.debounce(editor => {
 //Receiving socket events:
 
 //Update rooms
-socket.on('room-list', list => {
-	console.log("room-list:", list)
-})
+socket.on('room-list', rooms => update.updateRoomList(rooms, info.room))
 
 
 //Update users
-socket.on('user-list', list => {
-	console.log("user-list:", list)
-})
+socket.on('user-list', users => update.updateUsersList(users, info.user))
