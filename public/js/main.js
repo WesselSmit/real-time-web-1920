@@ -3,6 +3,7 @@ import * as utils from './modules/utils.mjs'
 
 const socket = io()
 
+//Get the client info
 const docInfo = document.getElementById('info')
 const info = {
 	user: docInfo.getAttribute('user-name'),
@@ -20,8 +21,8 @@ const sourceCode = CodeMirror.fromTextArea(editor, {
 	lineNumbers: true,
 	lineWrapping: true,
 	autoCloseTags: true,
+	readOnly: (info.user === info.host) ? false : true
 })
-const debounceTime = 250
 
 
 
@@ -29,28 +30,38 @@ const debounceTime = 250
 
 
 //Emitting socket events:
+const debounceTime = 250
 
 //Join the room
 socket.emit('join-room', info)
 
 
 //Update source-code
-sourceCode.on('change', utils.debounce(editor => {
-	const editorCode = editor.getValue()
-	console.log(editor, editorCode)
+sourceCode.on('change', utils.debounce((editor, change) => {
+	//Check if the 'change' event was fired because of 'input' or the 'setValue' method 
+	//(updating the sourceCode also fires fires the 'change' event, this causes infinite loops)
+	if (change.origin === "+input") { //the 'change' event was fired through user-input
+		const editorCode = editor.getValue()
+		socket.emit('code-edit', info, editorCode)
+	}
 }, debounceTime))
 
 
 
 
-console.log("host:", info.host)
+
+
 
 
 //Receiving socket events:
 
 //Update rooms
-socket.on('room-list', rooms => update.updateRoomList(rooms, info.room))
+socket.on('room-list', rooms => update.roomList(rooms, info.room))
 
 
 //Update users
-socket.on('user-list', users => update.updateUsersList(users, info.user, info.host))
+socket.on('user-list', users => update.userList(users, info.user, info.host))
+
+
+//Update Code
+socket.on('update-code', code => update.sourceCode(code, sourceCode))

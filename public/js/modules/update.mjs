@@ -1,5 +1,5 @@
 //Update list of all rooms
-export function updateRoomList(rooms, currentRoom) {
+export function roomList(rooms, currentRoom) {
 	const roomList = document.getElementById('rooms-list')
 
 	removeList(roomList)
@@ -17,7 +17,7 @@ export function updateRoomList(rooms, currentRoom) {
 
 
 //Update list of all users
-export function updateUsersList(users, currentUser, host) {
+export function userList(users, currentUser, host) {
 	const userList = document.getElementById('users-list')
 
 	removeList(userList)
@@ -36,6 +36,13 @@ export function updateUsersList(users, currentUser, host) {
 			li.innerHTML = li.textContent + "<span>" + "(host)</span>"
 		}
 	})
+}
+
+
+
+//Update source-code 
+export function sourceCode(code, editor) {
+	editor.setValue(code)
 }
 
 
