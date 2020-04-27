@@ -10,6 +10,7 @@
 
 	<script src="./libraries/codemirror/lib/codemirror.js"></script>
 	<script src="./libraries/codemirror/mode/xml/xml.js"></script>
+	<script src="./libraries/codemirror/addon/display/placeholder.js"></script>
 	<script src="./libraries/codemirror/addon/edit/closetag.js"></script>
 
 	<link rel="stylesheet" href="./libraries/codemirror/lib/codemirror.css" type="text/css">
@@ -23,7 +24,7 @@
 
 	<main>
 		<section id="code-container">
-			<textarea id="editor"><!-- Type your HTML code here... --></textarea>
+			<textarea id="editor" placeholder="<!-- Type your HTML code here... -->"></textarea>
 		</section>
 
 		<%- include('partials/communication') %>
