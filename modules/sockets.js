@@ -22,18 +22,21 @@ module.exports = io => {
 			const users = data.getUsersInRoom(client.room)
 			io.to(client.room).emit('user-list', users)
 
-
-			//TODO: users die later connecten moeten meteen de sourceCode gestuurd krijgen
+			//Send sourceCode to joined client
+			const sourceCode = data.getRoomSourceCode(client.room)
+			socket.emit('update-code', sourceCode)
 		})
 
 
 
 		//Host edits/writes code 
 		socket.on('code-edit', (client, code) => {
+
+			//Save sourceCode to server 
+			data.saveSourceCode(client.room, code)
+
 			//Send new code to everyone EXCEPT host
 			socket.broadcast.to(client.room).emit('update-code', code)
-
-			//TODO: code moet opgeslagen worden; nieuwe users moeten deze krijgen opgestuurd
 		})
 
 

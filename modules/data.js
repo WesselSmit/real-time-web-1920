@@ -11,7 +11,9 @@ module.exports = {
 	getJoinedRoom,
 	getRoomHost,
 	getRoomLanguage,
-	deleteRoom
+	deleteRoom,
+	saveSourceCode,
+	getRoomSourceCode
 }
 
 
@@ -21,7 +23,8 @@ function addRoom(room, language, user) {
 		name: room,
 		language,
 		host: user,
-		users: []
+		users: [],
+		code: ""
 	}
 
 	data.rooms.push(newRoom)
@@ -102,6 +105,19 @@ function deleteRoom(roomName) {
 	return data.rooms.splice(index, 1)
 }
 
+
+//Save passed code in data
+function saveSourceCode(roomName, code) {
+	const matchingRoom = findRoomWithName(roomName)
+	matchingRoom.code = code
+}
+
+
+//Get code from room
+function getRoomSourceCode(roomName) {
+	const matchingRoom = findRoomWithName(roomName)
+	return matchingRoom.code
+}
 
 
 
