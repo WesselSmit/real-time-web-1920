@@ -41,6 +41,17 @@ module.exports = io => {
 
 
 
+
+		socket.on('1', (client, coords, suggestion) => {
+			console.log(coords, suggestion)
+
+			socket.broadcast.to(client.room).emit('2', coords, suggestion)
+		})
+
+
+
+
+
 		//Client disconnects
 		socket.on('disconnect', () => {
 

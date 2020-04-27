@@ -53,9 +53,33 @@ sourceCode.on('change', utils.debounce((editor, change) => {
 //Overwrite code selection
 const overwriteButton = document.getElementById('overwrite')
 
-overwriteButton.addEventListener('click', () => update.pullRequest(sourceCode))
+// overwriteButton.addEventListener('click', () => update.pullRequest(sourceCode))
+
+overwriteButton.addEventListener('click', () => {
+	const doc = sourceCode.getDoc()
+	const coords = {
+		from: sourceCode.getCursor(true),
+		to: sourceCode.getCursor(false)
+	}
+
+	// doc.replaceRange("poep", coords.from, coords.to)
+
+	// update.pullRequest(sourceCode)
 
 
+	const suggestionInput = document.getElementById('suggestion')
+	const suggestion = suggestionInput.value
+
+	socket.emit('1', info, coords, suggestion)
+})
+
+socket.on('2', (coords, suggestion) => {
+	const doc = sourceCode.getDoc()
+
+	console.log(coords, suggestion)
+
+	doc.replaceRange(suggestion, coords.from, coords.to)
+})
 
 
 
