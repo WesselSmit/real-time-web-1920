@@ -47,6 +47,32 @@ export function sourceCode(code, editor) {
 
 
 
+//Overwrite code-selection
+export function pullRequest(sourceCode) {
+	//Credits to: https://stackoverflow.com/questions/23733455/inserting-a-new-text-at-given-cursor-position
+
+	const suggestionInput = document.getElementById('suggestion')
+
+	const selection = sourceCode.getSelection()
+	const suggestion = suggestionInput.value
+
+	if (selection.length > 0) {
+		sourceCode.replaceSelection(suggestion)
+	} else {
+		const doc = sourceCode.getDoc()
+		const cursor = doc.getCursor()
+
+		const pos = {
+			line: cursor.line,
+			ch: cursor.ch
+		}
+
+		doc.replaceRange(suggestion, pos)
+	}
+}
+
+
+
 
 
 

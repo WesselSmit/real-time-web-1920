@@ -50,6 +50,12 @@ sourceCode.on('change', utils.debounce((editor, change) => {
 
 
 
+//Overwrite code selection
+const overwriteButton = document.getElementById('overwrite')
+
+overwriteButton.addEventListener('click', () => update.pullRequest(sourceCode))
+
+
 
 
 
