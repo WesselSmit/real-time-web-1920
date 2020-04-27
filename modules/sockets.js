@@ -50,9 +50,19 @@ module.exports = io => {
 			//Leave server room
 			data.leaveRoom(room, socket.id)
 
-			//Send user-list to everyone in room
-			const users = data.getUsersInRoom(room)
-			io.to(room).emit('user-list', users)
+			//Remove room if it's empty
+			const numberOfUsers = data.getUsersInRoom(room).length
+			if (numberOfUsers < 1) { //Room is empty
+				data.deleteRoom(room)
+
+				//Send updated room-list to everyone in all rooms
+				const rooms = data.getRooms()
+				io.emit('room-list', rooms)
+			} else {
+				//Send updated  user-list to everyone in room
+				const users = data.getUsersInRoom(room)
+				io.to(room).emit('user-list', users)
+			}
 		})
 	})
 }

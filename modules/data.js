@@ -10,7 +10,8 @@ module.exports = {
 	getUsersInRoom,
 	getJoinedRoom,
 	getRoomHost,
-	getRoomLanguage
+	getRoomLanguage,
+	deleteRoom
 }
 
 
@@ -92,6 +93,13 @@ function getRoomHost(roomName) {
 function getRoomLanguage(roomName) {
 	const matchingRoom = findRoomWithName(roomName)
 	return matchingRoom.language
+}
+
+
+//Delete room
+function deleteRoom(roomName) {
+	const index = data.rooms.findIndex(room => room.name === roomName)
+	return data.rooms.splice(index, 1)
 }
 
 
