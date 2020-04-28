@@ -27,10 +27,47 @@ const sourceCode = CodeMirror.fromTextArea(editor, {
 
 
 
+//PR variables
+const pr_input_container = document.getElementById('pr-input-container')
+const pr_reference = document.getElementById('pr-reference')
+const pr_suggestion = document.getElementById('pr-suggestion')
+const pr_toggle = document.getElementById('pr-toggle')
+const pr_submit = document.getElementById('pr-submit')
 
+//Make selection on mouse activity
+document.addEventListener('mouseup', () => {
+	const selection = sourceCode.getSelection()
+
+	if (!pr_input_container.classList.contains('hidden')) {
+		pr_reference.textContent = selection
+	}
+})
+
+//Toggle PR menu
+pr_toggle.addEventListener('click', () => {
+	const pr_toggle_container = document.getElementById('pr-toggle-container')
+
+	//Toggle menu options (minimized - maximized)
+	pr_toggle_container.classList.toggle('minimized')
+	pr_toggle_container.classList.toggle('maximized')
+
+	//Toggle menu interface (hidden - shown)
+	pr_input_container.classList.toggle('hidden')
+	if (pr_input_container.classList.contains('hidden')) {
+		update.resetPR()
+	}
+})
+
+
+
+
+
+
+
+
+const debounceTime = 250
 
 //Emitting socket events:
-const debounceTime = 250
 
 //Join the room
 socket.emit('join-room', info)
@@ -45,6 +82,33 @@ sourceCode.on('change', utils.debounce((editor, change) => {
 		socket.emit('code-edit', info, editorCode)
 	}
 }, debounceTime))
+
+
+//Submit PR (if not empty)
+pr_submit.addEventListener('click', e => {
+	e.preventDefault()
+
+	const reference = pr_reference.value
+	const suggestion = pr_suggestion.value
+
+	const pr_submit_warning = document.getElementById('pr-submit-warning')
+
+	//Check if all required inputs are answered
+	if (reference === "" || suggestion === "") {
+		pr_submit_warning.classList.remove('hidden')
+	} else {
+		pr_submit_warning.classList.add('hidden')
+
+		const uid = utils.generateUID()
+		const doc = sourceCode.getDoc()
+		const coords = {
+			from: sourceCode.getCursor(true),
+			to: sourceCode.getCursor(false)
+		}
+
+		socket.emit('pull-request-submit', info, coords, suggestion)
+	}
+})
 
 
 
@@ -97,60 +161,11 @@ socket.on('user-list', users => update.userList(users, info.user, info.host))
 socket.on('update-code', code => update.sourceCode(code, sourceCode))
 
 
+//Update Pull-Request (pending)
+socket.on('pull-request-pending', (coords, suggestion) => {
+	const doc = sourceCode.getDoc()
 
+	console.log("received: ", coords, suggestion)
 
-
-const pr_reference = document.getElementById('pr-reference')
-const pr_suggestion = document.getElementById('pr-suggestion')
-const pr_input_container = document.getElementById('pr-input-container')
-document.addEventListener('mouseup', () => {
-	const selection = sourceCode.getSelection()
-
-	if (!pr_input_container.classList.contains('hidden')) {
-		pr_reference.textContent = selection
-	}
+	doc.replaceRange(suggestion, coords.from, coords.to)
 })
-
-
-const pr_toggle = document.getElementById('pr-toggle')
-pr_toggle.addEventListener('click', () => {
-	const pr_toggle_container = document.getElementById('pr-toggle-container')
-
-	//Toggle menu options (minimized - maximized)
-	pr_toggle_container.classList.toggle('minimized')
-	pr_toggle_container.classList.toggle('maximized')
-
-	//Toggle menu interface (hidden - shown)
-	pr_input_container.classList.toggle('hidden')
-	if (pr_input_container.classList.contains('hidden')) {
-		update.resetPR()
-	}
-})
-
-
-const pr_submit = document.getElementById('pr-submit')
-pr_submit.addEventListener('click', e => {
-	e.preventDefault()
-
-	const reference = pr_reference.value
-	const suggestion = pr_suggestion.value
-
-	console.log("reference:", reference, "suggestion:", suggestion)
-})
-
-
-
-
-
-// //TODO verwerk de interface veranderingen van een pull-request
-// const PR = document.querySelector('.PR-reference')
-
-// console.log(PR, editor)
-
-// const PR_CM = CodeMirror.fromTextArea(PR, {
-// 	mode: info.mode,
-// 	theme: 'dracula',
-// 	lineNumbers: true,
-// 	lineWrapping: true,
-// 	readOnly: true
-// })

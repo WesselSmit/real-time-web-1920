@@ -48,6 +48,7 @@ export function sourceCode(code, editor) {
 
 //Clear PR reference/suggestion + hide menu
 export function resetPR() {
+	document.getElementById('pr-message').value = ""
 	document.getElementById('pr-reference').textContent = ""
 	document.getElementById('pr-suggestion').value = ""
 

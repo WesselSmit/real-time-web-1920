@@ -47,7 +47,7 @@
 							margin: 0;
 							color: $primary-color;
 							font-family: $body-font;
-							animation: text-pulsing 3s ease-in-out infinite;
+							animation: text-pulsing 3s 3s ease-in-out infinite;
 
 
 							&.hidden {
@@ -108,7 +108,7 @@
 
 
 						#pr-reference {
-							height: 100px;
+							height: 75px;
 							overflow-y: scroll;
 							background-color: $secondary-color;
 							cursor: default;
@@ -121,7 +121,7 @@
 
 
 						#pr-suggestion {
-							height: 100px;
+							height: 75px;
 							overflow-y: scroll;
 							background-color: $primary-color-opacity;
 

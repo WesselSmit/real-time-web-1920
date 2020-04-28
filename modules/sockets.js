@@ -42,10 +42,10 @@ module.exports = io => {
 
 
 
-		socket.on('1', (client, coords, suggestion) => {
+		socket.on('pull-request-submit', (client, coords, suggestion) => {
 			console.log(coords, suggestion)
 
-			socket.broadcast.to(client.room).emit('2', coords, suggestion)
+			io.in(client.room).emit('pull-request-pending', coords, suggestion)
 		})
 
 
