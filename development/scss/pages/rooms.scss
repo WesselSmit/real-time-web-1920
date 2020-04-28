@@ -22,103 +22,310 @@
 			&#communication-container {
 				grid-column: 2 / 2;
 				background-color: $communication-background-color;
-				padding: 0 25px;
-			}
-		}
-
-
-		#menu-container {
-			grid-column: 3 / 3;
-			background-color: $primary-color;
-
-
-			#branding-container {
-				max-height: 30px;
-				height: 30px;
 				display: grid;
-				grid-template-columns: 30px 1fr;
-				margin-bottom: 20px;
+				grid-template-columns: 1fr;
+				grid-template-rows: 1fr auto;
 
 
-				img {
-					grid-column: 1 / 1;
-					max-height: 18px;
-					justify-self: center;
-					align-self: center;
-				}
+				#pr-menu {
+					grid-row: 2 / 2;
 
 
-				h1 {
-					grid-column: 2 / 3;
-					color: $secondary-color;
-					margin: 0;
-					font-size: 20px;
-					justify-self: start;
-					align-self: center;
-					font-family: $body-font;
-				}
-			}
+					#pr-input-container {
+						border: 0;
+						margin: 0;
+						padding: 10px;
+						background-color: $secondary-color;
 
 
-			#rooms-container,
-			#users-container {
-				padding: 10px 25px;
-				width: 100%;
-				margin-bottom: 20px;
-
-
-				h2 {
-					margin: 0;
-					font-size: 16px;
-				}
-
-
-				ul {
-					margin: 0;
-					padding-left: 20px;
-
-
-					li {
-						list-style-type: none;
-						display: block;
-						width: 130px;
-						position: relative;
-
-
-						&::before {
-							content: "";
-							background-image: url(../media/images/item-icon-color.svg);
-							background-repeat: no-repeat;
-							background-position: center;
-							padding: 1px 15px;
-							position: absolute;
-							left: -40px;
-							height: 20px;
-							width: 20px;
+						&.hidden {
+							@include hide;
 						}
 
 
-						&.current-room,
-						&.current-user {
-							background-color: $secondary-color;
+						#pr-submit-warning {
+							margin: 0;
 							color: $primary-color;
-							padding-left: 5px;
+							font-family: $body-font;
+							animation: text-pulsing 3s ease-in-out infinite;
 
 
-							&::after {
-								content: "";
-								padding: 19px 0 0 30px;
-								position: absolute;
-								right: -20px;
-								background-color: $secondary-color;
+							&.hidden {
+								@include hide;
 							}
 						}
 
 
-						&.host span {
-							font-style: italic;
-							font-size: 12px;
+						label {
+							font-family: $header-font;
+							font-size: 16px;
+							color: $primary-color;
+
+
+							span {
+								font-family: $body-font;
+								font-size: 12px;
+
+
+								&.hide {
+									@include hide;
+								}
+							}
 						}
+
+
+						textarea {
+							display: block;
+							width: calc(100% - 10px);
+							max-width: calc(100% - 10px);
+							margin-bottom: 20px;
+							outline: none;
+							border: 0;
+							font-family: $body-font;
+							font-size: 12px;
+							color: $primary-color;
+							resize: none;
+
+
+							&::placeholder {
+								color: $primary-color;
+								opacity: .8;
+								font-size: 12px;
+							}
+						}
+
+
+						#pr-message {
+							max-height: 75px;
+							overflow-y: scroll;
+							background-color: $primary-color-opacity;
+
+
+							&:focus {
+								border-left: 2px solid $primary-color;
+							}
+						}
+
+
+						#pr-reference {
+							height: 100px;
+							overflow-y: scroll;
+							background-color: $secondary-color;
+							cursor: default;
+
+
+							&::placeholder {
+								font-family: $header-font;
+							}
+						}
+
+
+						#pr-suggestion {
+							height: 100px;
+							overflow-y: scroll;
+							background-color: $primary-color-opacity;
+
+
+							&:focus {
+								border-left: 2px solid $primary-color;
+							}
+						}
+					}
+
+
+					#pr-toggle-container {
+						background-color: $secondary-color;
+						padding: 5px 25px;
+
+
+						&.minimized {
+							#pr-toggle {
+								@include hide;
+
+
+								&+label {
+									display: block;
+									margin-left: auto;
+									width: 96px;
+									padding: 5px 0;
+									font-family: $body-font;
+									font-size: 16px;
+									border: 2px solid $primary-color;
+									background-color: $primary-color;
+									color: $secondary-color;
+									text-transform: capitalize;
+									text-align: center;
+
+
+									&:hover {
+										background-color: $secondary-color;
+										color: $primary-color;
+									}
+								}
+							}
+
+
+							#pr-submit {
+								@include hide;
+							}
+						}
+
+
+						&.maximized {
+							display: grid;
+							grid-template-columns: 1fr auto;
+							justify-items: end;
+							align-items: center;
+						}
+
+
+						#pr-toggle {
+							@include hide;
+
+
+							&+label {
+								grid-column: 1 / 1;
+								color: $primary-color;
+								text-transform: lowercase;
+
+
+								&::after {
+									cursor: pointer;
+								}
+							}
+
+
+							&:not(:checked)+label::after {
+								content: "create";
+							}
+
+
+							&:checked+label::after {
+								content: "cancel";
+							}
+						}
+
+
+						#pr-submit {
+							grid-column: 2 / 2;
+							margin-left: 25px;
+							width: 100px;
+							padding: 5px 2px;
+							font-family: $body-font;
+							font-size: 16px;
+							border: 2px solid $primary-color;
+							background-color: $primary-color;
+							color: $secondary-color;
+							text-transform: capitalize;
+							text-align: center;
+							user-select: none;
+							cursor: pointer;
+
+
+							&:focus,
+							&:hover {
+								background-color: $secondary-color;
+								color: $primary-color;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	#menu-container {
+		grid-column: 3 / 3;
+		background-color: $primary-color;
+
+
+		#branding-container {
+			max-height: 30px;
+			height: 30px;
+			display: grid;
+			grid-template-columns: 30px 1fr;
+			margin-bottom: 20px;
+
+
+			img {
+				grid-column: 1 / 1;
+				max-height: 18px;
+				justify-self: center;
+				align-self: center;
+			}
+
+
+			h1 {
+				grid-column: 2 / 3;
+				color: $secondary-color;
+				margin: 0;
+				font-size: 20px;
+				justify-self: start;
+				align-self: center;
+				font-family: $body-font;
+			}
+		}
+
+
+		#rooms-container,
+		#users-container {
+			padding: 10px 25px;
+			width: 100%;
+			margin-bottom: 20px;
+
+
+			h2 {
+				margin: 0;
+				font-size: 16px;
+			}
+
+
+			ul {
+				margin: 0;
+				padding-left: 20px;
+
+
+				li {
+					list-style-type: none;
+					display: block;
+					width: 130px;
+					position: relative;
+
+
+					&::before {
+						content: "";
+						background-image: url(../media/images/item-icon-color.svg);
+						background-repeat: no-repeat;
+						background-position: center;
+						padding: 1px 15px;
+						position: absolute;
+						left: -40px;
+						height: 20px;
+						width: 20px;
+					}
+
+
+					&.current-room,
+					&.current-user {
+						background-color: $secondary-color;
+						color: $primary-color;
+						padding-left: 5px;
+
+
+						&::after {
+							content: "";
+							padding: 19px 0 0 30px;
+							position: absolute;
+							right: -20px;
+							background-color: $secondary-color;
+						}
+					}
+
+
+					&.host span {
+						font-style: italic;
+						font-size: 12px;
 					}
 				}
 			}

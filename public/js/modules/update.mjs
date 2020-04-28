@@ -46,6 +46,21 @@ export function sourceCode(code, editor) {
 }
 
 
+//Clear PR reference/suggestion + hide menu
+export function resetPR() {
+	document.getElementById('pr-reference').textContent = ""
+	document.getElementById('pr-suggestion').value = ""
+
+	hidePRmenu()
+}
+
+
+//Hide PR menu
+export function hidePRmenu() {
+	document.getElementById('pr-toggle-container').classList.remove('maximized')
+	document.getElementById('pr-toggle-container').classList.add('minimized')
+}
+
 
 //Overwrite code-selection
 // export function pullRequest(sourceCode) {
