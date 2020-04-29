@@ -59,6 +59,7 @@ if (info.user != info.host) {
 		pr_input_container.classList.toggle('hidden')
 		if (pr_input_container.classList.contains('hidden')) {
 			update.resetPR()
+			update.hidePRmenu()
 		}
 	})
 
@@ -92,6 +93,8 @@ if (info.user != info.host) {
 				suggestion,
 				id: uid
 			}
+
+			update.resetPR()
 
 			socket.emit('pull-request-submit', info, pr)
 		}
@@ -144,4 +147,4 @@ socket.on('update-code', code => update.sourceCode(code, sourceCode))
 
 
 //Update Pull-Request (pending)
-socket.on('pull-request-pending', (sender, pr) => update.pr_pending(sender, pr))
+socket.on('pull-request-pending', (sender, pr) => update.pr_pending(info, sender, pr))

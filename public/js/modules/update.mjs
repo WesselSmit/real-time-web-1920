@@ -51,7 +51,8 @@ export function resetPR() {
 	document.getElementById('pr-reference').textContent = ""
 	document.getElementById('pr-suggestion').value = ""
 
-	hidePRmenu()
+	const pr_submit_warning = document.getElementById('pr-submit-warning')
+	pr_submit_warning.classList.add('hidden')
 }
 
 
@@ -63,8 +64,9 @@ export function hidePRmenu() {
 
 
 //Create pending pr card & insert in DOM
-export function pr_pending(sender, pr) {
+export function pr_pending(info, sender, pr) {
 	const pr_display = document.getElementById('pr-display')
+	const maxRows = 3
 
 	const card = document.createElement('article')
 	card.classList.add('pr-card')
@@ -85,7 +87,7 @@ export function pr_pending(sender, pr) {
 	card.append(messageLabel)
 
 	const message = document.createElement('textarea')
-	message.setAttribute('rows', 4)
+	message.setAttribute('rows', pr.message.split('\n').length)
 	message.setAttribute('readonly', true)
 	message.classList.add('pr-card-message')
 	message.textContent = pr.message
@@ -100,8 +102,12 @@ export function pr_pending(sender, pr) {
 	referenceLabel.textContent = "Reference"
 	card.append(referenceLabel)
 
+	const referenceLines = document.createElement('span')
+	referenceLines.textContent = ` (referenced lines: ${pr.coords.from.line + 1} - ${pr.coords.to.line + 1})`
+	referenceLabel.append(referenceLines)
+
 	const reference = document.createElement('textarea')
-	reference.setAttribute('rows', 4)
+	reference.setAttribute('rows', pr.reference.split('\n').length)
 	reference.setAttribute('readonly', true)
 	reference.classList.add('pr-card-reference')
 	reference.textContent = pr.reference
@@ -112,15 +118,45 @@ export function pr_pending(sender, pr) {
 	card.append(suggestionLabel)
 
 	const suggestion = document.createElement('textarea')
-	suggestion.setAttribute('rows', 4)
+	suggestion.setAttribute('rows', pr.suggestion.split('\n').length)
 	suggestion.setAttribute('readonly', true)
 	suggestion.classList.add('pr-card-suggestion')
 	suggestion.textContent = pr.suggestion
 	card.append(suggestion)
+
+	//If (user === host) also create a review part in the card
+	if (info.host === info.user) {
+		createReviewSection(card)
+	}
 }
 
+//Create PR review part 
+function createReviewSection(card) {
+	const pr_review = document.createElement('div')
+	pr_review.classList.add('pr-review')
+	card.append(pr_review)
 
+	const acceptButton = document.createElement('button')
+	acceptButton.classList.add('pr-accept')
+	acceptButton.textContent = "Accept"
+	pr_review.append(acceptButton)
+	acceptButton.addEventListener('click', () => reviewPR(true))
 
+	const declineButton = document.createElement('button')
+	declineButton.classList.add('pr-decline')
+	declineButton.textContent = "Decline"
+	pr_review.append(declineButton)
+	declineButton.addEventListener('click', () => reviewPR(false))
+}
+
+function reviewPR(status) {
+	console.log("review", status)
+}
+
+//Remove all list-items from passed list
+function removeList(list) {
+	list.innerHTML = ""
+}
 
 
 
@@ -147,18 +183,3 @@ export function pr_pending(sender, pr) {
 // 		doc.replaceRange(suggestion, pos)
 // 	}
 // }
-
-
-
-
-
-
-
-
-
-//Helper functions:
-
-//Remove all list-items from passed list
-function removeList(list) {
-	list.innerHTML = ""
-}
