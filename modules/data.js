@@ -13,7 +13,9 @@ module.exports = {
 	getRoomLanguage,
 	deleteRoom,
 	saveSourceCode,
-	getRoomSourceCode
+	getRoomSourceCode,
+	savePullRequest,
+	getPullRequests
 }
 
 
@@ -24,7 +26,8 @@ function addRoom(room, language, user) {
 		language,
 		host: user,
 		users: [],
-		code: ""
+		code: "",
+		pullRequests: []
 	}
 
 	data.rooms.push(newRoom)
@@ -120,8 +123,26 @@ function getRoomSourceCode(roomName) {
 }
 
 
+//Save PR
+function savePullRequest(roomName, pr) {
+	const matchingRoom = findRoomWithName(roomName)
 
-//Helper functions
+	matchingRoom.pullRequests.push(pr)
+	return matchingRoom.pullRequests
+}
+
+
+//Get PR from room
+function getPullRequests(roomName) {
+	const matchingRoom = findRoomWithName(roomName)
+	return matchingRoom.pullRequests
+}
+
+
+
+//Helper functions:
+
+//Find room in data by name
 function findRoomWithName(name) {
 	return data.rooms.find(room => room.name === name)
 }

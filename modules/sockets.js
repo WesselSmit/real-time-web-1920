@@ -42,10 +42,13 @@ module.exports = io => {
 
 
 
-		socket.on('pull-request-submit', (client, coords, suggestion) => {
-			console.log(coords, suggestion)
+		socket.on('pull-request-submit', (client, pr) => {
 
-			io.in(client.room).emit('pull-request-pending', coords, suggestion)
+			//Save PR to server
+			data.savePullRequest(client.room, pr)
+
+			//Send pull-request to ALL users in room (also host)
+			io.in(client.room).emit('pull-request-pending', client, pr)
 		})
 
 

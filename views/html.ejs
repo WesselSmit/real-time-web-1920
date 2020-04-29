@@ -29,32 +29,6 @@
 		</section>
 
 		<%- include('partials/communication', {host, username}) %>
-		<!-- TODO: onderstaande form moet in communication.ejs komen te staan -->
-		<section id="communication-container">
-			<form id="pr-menu">
-				<fieldset id="pr-input-container" class="hidden">
-					<p id="pr-submit-warning" class="hidden">Reference & Suggestion are required to submit</p>
-
-					<label for="pr-message">Message <span>(optional)</span></label>
-					<textarea id="pr-message" placeholder="Enter Pull-Request message"></textarea>
-
-					<label for="pr-reference">Reference <span>(required)</span></label>
-					<textarea id="pr-reference"
-						placeholder="Your selection is blank! &#10; &#10;Either select the code you want to reference by selecting the code in the editor, &#10;Or select some whitespace to insert code at cursor position without overwriting."
-						readonly></textarea>
-
-					<label for="pr-suggestion">Suggested Changes <span>(required)</span></label>
-					<textarea id="pr-suggestion" placeholder="Enter code that'll overwrite the reference"></textarea>
-				</fieldset>
-
-				<div id="pr-toggle-container" class="minimized">
-					<input type="checkbox" id="pr-toggle">
-					<label for="pr-toggle"></label>
-
-					<button id="pr-submit">Submit</button>
-				</div>
-			</form>
-		</section>
 
 		<%- include('partials/menu') %>
 	</main>

@@ -39,7 +39,6 @@ export function userList(users, currentUser, host) {
 }
 
 
-
 //Update source-code 
 export function sourceCode(code, editor) {
 	editor.setValue(code)
@@ -61,6 +60,68 @@ export function hidePRmenu() {
 	document.getElementById('pr-toggle-container').classList.remove('maximized')
 	document.getElementById('pr-toggle-container').classList.add('minimized')
 }
+
+
+//Create pending pr card & insert in DOM
+export function pr_pending(sender, pr) {
+	const pr_display = document.getElementById('pr-display')
+
+	const card = document.createElement('article')
+	card.classList.add('pr-card')
+	pr_display.append(card)
+
+	const name = document.createElement('h2')
+	name.classList.add('pr-card-name')
+	name.textContent = sender.user
+	card.append(name)
+
+	const id = document.createElement('p')
+	id.classList.add('pr-card-id')
+	id.textContent = pr.id
+	card.append(id)
+
+	const messageLabel = document.createElement('label')
+	messageLabel.textContent = "Message"
+	card.append(messageLabel)
+
+	const message = document.createElement('textarea')
+	message.setAttribute('rows', 4)
+	message.setAttribute('readonly', true)
+	message.classList.add('pr-card-message')
+	message.textContent = pr.message
+	card.append(message)
+
+	if (pr.message === "") {
+		message.classList.add('hide')
+		messageLabel.classList.add('hide')
+	}
+
+	const referenceLabel = document.createElement('label')
+	referenceLabel.textContent = "Reference"
+	card.append(referenceLabel)
+
+	const reference = document.createElement('textarea')
+	reference.setAttribute('rows', 4)
+	reference.setAttribute('readonly', true)
+	reference.classList.add('pr-card-reference')
+	reference.textContent = pr.reference
+	card.append(reference)
+
+	const suggestionLabel = document.createElement('label')
+	suggestionLabel.textContent = "Suggestion"
+	card.append(suggestionLabel)
+
+	const suggestion = document.createElement('textarea')
+	suggestion.setAttribute('rows', 4)
+	suggestion.setAttribute('readonly', true)
+	suggestion.classList.add('pr-card-suggestion')
+	suggestion.textContent = pr.suggestion
+	card.append(suggestion)
+}
+
+
+
+
 
 
 //Overwrite code-selection

@@ -27,37 +27,76 @@ const sourceCode = CodeMirror.fromTextArea(editor, {
 
 
 
+
+
+
 //PR variables
-const pr_input_container = document.getElementById('pr-input-container')
-const pr_reference = document.getElementById('pr-reference')
-const pr_suggestion = document.getElementById('pr-suggestion')
-const pr_toggle = document.getElementById('pr-toggle')
-const pr_submit = document.getElementById('pr-submit')
+if (info.user != info.host) {
+	const pr_input_container = document.getElementById('pr-input-container')
+	const pr_reference = document.getElementById('pr-reference')
+	const pr_suggestion = document.getElementById('pr-suggestion')
+	const pr_toggle = document.getElementById('pr-toggle')
+	const pr_submit = document.getElementById('pr-submit')
 
-//Make selection on mouse activity
-document.addEventListener('mouseup', () => {
-	const selection = sourceCode.getSelection()
+	//Make selection on mouse activity
+	document.addEventListener('mouseup', () => {
+		const selection = sourceCode.getSelection()
 
-	if (!pr_input_container.classList.contains('hidden')) {
-		pr_reference.textContent = selection
-	}
-})
+		if (!pr_input_container.classList.contains('hidden')) {
+			pr_reference.textContent = selection
+		}
+	})
 
-//Toggle PR menu
-pr_toggle.addEventListener('click', () => {
-	const pr_toggle_container = document.getElementById('pr-toggle-container')
+	//Toggle PR menu
+	pr_toggle.addEventListener('click', () => {
+		const pr_toggle_container = document.getElementById('pr-toggle-container')
 
-	//Toggle menu options (minimized - maximized)
-	pr_toggle_container.classList.toggle('minimized')
-	pr_toggle_container.classList.toggle('maximized')
+		//Toggle menu options (minimized - maximized)
+		pr_toggle_container.classList.toggle('minimized')
+		pr_toggle_container.classList.toggle('maximized')
 
-	//Toggle menu interface (hidden - shown)
-	pr_input_container.classList.toggle('hidden')
-	if (pr_input_container.classList.contains('hidden')) {
-		update.resetPR()
-	}
-})
+		//Toggle menu interface (hidden - shown)
+		pr_input_container.classList.toggle('hidden')
+		if (pr_input_container.classList.contains('hidden')) {
+			update.resetPR()
+		}
+	})
 
+	//Submit PR (if not empty)
+	pr_submit.addEventListener('click', e => {
+		e.preventDefault()
+
+		const reference = pr_reference.value
+		const suggestion = pr_suggestion.value
+
+		const pr_submit_warning = document.getElementById('pr-submit-warning')
+		const pr_message = document.getElementById('pr-message')
+
+		//Check if all required inputs are answered
+		if (reference === "" || suggestion === "") {
+			pr_submit_warning.classList.remove('hidden')
+		} else {
+			pr_submit_warning.classList.add('hidden')
+
+			const uid = utils.generateUID()
+			const message = pr_message.value
+			const coords = {
+				from: sourceCode.getCursor(true),
+				to: sourceCode.getCursor(false)
+			}
+
+			const pr = {
+				coords,
+				message,
+				reference,
+				suggestion,
+				id: uid
+			}
+
+			socket.emit('pull-request-submit', info, pr)
+		}
+	})
+}
 
 
 
@@ -84,66 +123,9 @@ sourceCode.on('change', utils.debounce((editor, change) => {
 }, debounceTime))
 
 
-//Submit PR (if not empty)
-pr_submit.addEventListener('click', e => {
-	e.preventDefault()
-
-	const reference = pr_reference.value
-	const suggestion = pr_suggestion.value
-
-	const pr_submit_warning = document.getElementById('pr-submit-warning')
-
-	//Check if all required inputs are answered
-	if (reference === "" || suggestion === "") {
-		pr_submit_warning.classList.remove('hidden')
-	} else {
-		pr_submit_warning.classList.add('hidden')
-
-		const uid = utils.generateUID()
-		const doc = sourceCode.getDoc()
-		const coords = {
-			from: sourceCode.getCursor(true),
-			to: sourceCode.getCursor(false)
-		}
-
-		socket.emit('pull-request-submit', info, coords, suggestion)
-	}
-})
 
 
 
-
-
-//Overwrite code selection
-// const overwriteButton = document.getElementById('overwrite')
-
-// // overwriteButton.addEventListener('click', () => update.pullRequest(sourceCode))
-
-// overwriteButton.addEventListener('click', () => {
-// 	const doc = sourceCode.getDoc()
-// 	const coords = {
-// 		from: sourceCode.getCursor(true),
-// 		to: sourceCode.getCursor(false)
-// 	}
-
-// 	// doc.replaceRange("poep", coords.from, coords.to)
-
-// 	// update.pullRequest(sourceCode)
-
-
-// 	const suggestionInput = document.getElementById('suggestion')
-// 	const suggestion = suggestionInput.value
-
-// 	socket.emit('1', info, coords, suggestion)
-// })
-
-// socket.on('2', (coords, suggestion) => {
-// 	const doc = sourceCode.getDoc()
-
-// 	console.log(coords, suggestion)
-
-// 	doc.replaceRange(suggestion, coords.from, coords.to)
-// })
 
 
 
@@ -162,10 +144,4 @@ socket.on('update-code', code => update.sourceCode(code, sourceCode))
 
 
 //Update Pull-Request (pending)
-socket.on('pull-request-pending', (coords, suggestion) => {
-	const doc = sourceCode.getDoc()
-
-	console.log("received: ", coords, suggestion)
-
-	doc.replaceRange(suggestion, coords.from, coords.to)
-})
+socket.on('pull-request-pending', (sender, pr) => update.pr_pending(sender, pr))
