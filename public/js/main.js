@@ -109,7 +109,6 @@ if (info.user != info.host) {
 
 const debounceTime = 250
 
-//Emitting socket events:
 
 //Join the room
 socket.emit('join-room', info)
@@ -132,8 +131,6 @@ sourceCode.on('change', utils.debounce((editor, change) => {
 
 
 
-//Receiving socket events:
-
 //Update rooms
 socket.on('room-list', rooms => update.roomList(rooms, info.room))
 
@@ -147,4 +144,19 @@ socket.on('update-code', code => update.sourceCode(code, sourceCode))
 
 
 //Update Pull-Request (pending)
-socket.on('pull-request-pending', (sender, pr) => update.pr_pending(info, sender, pr))
+socket.on('pull-request-pending', (sender, pr) => {
+	const pr_pending_card = update.pr_pending(info, sender, pr)
+
+	//If (user === host) also create a review part in the card
+	if (info.host === info.user) {
+		const reviewButtons = update.createReviewSection(pr_pending_card)
+		reviewButtons.forEach(button => button.addEventListener('click', () => {
+
+			//Update the status (accepted / declined color)
+			const status = update.reviewPRstatus(pr_pending_card, button)
+
+			//Emit review to server
+			socket.emit('pull-request-review', info, pr.id, status)
+		}))
+	}
+})

@@ -15,7 +15,9 @@ module.exports = {
 	saveSourceCode,
 	getRoomSourceCode,
 	savePullRequest,
-	getPullRequests
+	getRoomPullRequests,
+	getPullRequestById,
+	assignPullRequestStatus
 }
 
 
@@ -124,18 +126,37 @@ function getRoomSourceCode(roomName) {
 
 
 //Save PR
-function savePullRequest(roomName, pr) {
+function savePullRequest(roomName, pr, sender) {
 	const matchingRoom = findRoomWithName(roomName)
 
+	pr.sender = sender
 	matchingRoom.pullRequests.push(pr)
+
 	return matchingRoom.pullRequests
 }
 
 
 //Get PR from room
-function getPullRequests(roomName) {
+function getRoomPullRequests(roomName) {
 	const matchingRoom = findRoomWithName(roomName)
 	return matchingRoom.pullRequests
+}
+
+
+//Get Pull Request by id
+function getPullRequestById(room, id) {
+	const matchingPullRequest = room.pullRequests.find(pr => pr.id === id)
+	return matchingPullRequest
+}
+
+
+//Assign a status to PR 
+function assignPullRequestStatus(roomName, id, status) {
+	const matchingRoom = findRoomWithName(roomName)
+	const pullRequest = getPullRequestById(matchingRoom, id)
+
+	pullRequest.status = status
+	return pullRequest
 }
 
 

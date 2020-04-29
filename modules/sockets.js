@@ -45,10 +45,30 @@ module.exports = io => {
 		socket.on('pull-request-submit', (client, pr) => {
 
 			//Save PR to server
-			data.savePullRequest(client.room, pr)
+			data.savePullRequest(client.room, pr, client.user)
 
 			//Send pull-request to ALL users in room (also host)
 			io.in(client.room).emit('pull-request-pending', client, pr)
+		})
+
+
+
+		//TODO: pull-requests moeten weergegeven worden wanneer de gebruiker connect (met de correcte status)
+		//TODO: de grootte van de create-pull-request form textarea's moeten even groot zijn als het aantal regels (net zoals de pending cards hebben)
+		//TODO: zorg dat PR-display autoscrolled naar beneden
+
+		//TODO:
+		//todo - update server data
+		//todo - update all users in room
+		//todo - if accepted => overwrite code
+
+		socket.on('pull-request-review', (client, id, status) => {
+
+			//Update the status of the pull request in data
+			const pr = data.assignPullRequestStatus(client.room, id, status)
+
+			//Send updated pull request object to ALL clients (also host)
+			io.in(client.room).emit('pull-request-reviewed', pr)
 		})
 
 

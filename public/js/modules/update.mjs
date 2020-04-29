@@ -66,7 +66,6 @@ export function hidePRmenu() {
 //Create pending pr card & insert in DOM
 export function pr_pending(info, sender, pr) {
 	const pr_display = document.getElementById('pr-display')
-	const maxRows = 3
 
 	const card = document.createElement('article')
 	card.classList.add('pr-card')
@@ -124,14 +123,11 @@ export function pr_pending(info, sender, pr) {
 	suggestion.textContent = pr.suggestion
 	card.append(suggestion)
 
-	//If (user === host) also create a review part in the card
-	if (info.host === info.user) {
-		createReviewSection(card)
-	}
+	return card
 }
 
 //Create PR review part 
-function createReviewSection(card) {
+export function createReviewSection(card) {
 	const pr_review = document.createElement('div')
 	pr_review.classList.add('pr-review')
 	card.append(pr_review)
@@ -140,17 +136,23 @@ function createReviewSection(card) {
 	acceptButton.classList.add('pr-accept')
 	acceptButton.textContent = "Accept"
 	pr_review.append(acceptButton)
-	acceptButton.addEventListener('click', () => reviewPR(true))
 
 	const declineButton = document.createElement('button')
 	declineButton.classList.add('pr-decline')
 	declineButton.textContent = "Decline"
 	pr_review.append(declineButton)
-	declineButton.addEventListener('click', () => reviewPR(false))
+
+	return [acceptButton, declineButton]
 }
 
-function reviewPR(status) {
-	console.log("review", status)
+export function reviewPRstatus(card, button) {
+	if (button.textContent === "Accept") {
+		card.classList.add('accepted')
+		return "accepted"
+	} else {
+		card.classList.add('declined')
+		return "declined"
+	}
 }
 
 //Remove all list-items from passed list
