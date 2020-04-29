@@ -24,3 +24,14 @@ export function generateUID() {
 
 	return uuid
 }
+
+
+
+
+export function scrollDown(card) {
+	card.scrollIntoView({
+		behavior: "smooth",
+		block: "end",
+		inline: "nearest"
+	})
+}

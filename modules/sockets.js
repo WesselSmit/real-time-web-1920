@@ -57,16 +57,10 @@ module.exports = io => {
 		//TODO: de grootte van de create-pull-request form textarea's moeten even groot zijn als het aantal regels (net zoals de pending cards hebben)
 		//TODO: zorg dat PR-display autoscrolled naar beneden
 
-		//TODO:
-		//todo - update all users in room
-		//todo - if accepted => overwrite code
-
 		socket.on('pull-request-review', (client, id, status) => {
 
 			//Update the status of the pull request in data
 			const pr = data.assignPullRequestStatus(client.room, id, status)
-
-			console.log(pr)
 
 			//Send updated pull request object to ALL clients (also host)
 			io.in(client.room).emit('pull-request-reviewed', pr)

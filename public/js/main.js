@@ -160,11 +160,21 @@ socket.on('pull-request-pending', pr => {
 			socket.emit('pull-request-review', info, pr.id, status)
 		}))
 	}
+
+	utils.scrollDown(pr_pending_card)
 })
 
 
 //Update Pull-Request (reviewed)
 socket.on('pull-request-reviewed', pr => {
 	const pr_card = document.querySelector(`[pr-id="${pr.id}"]`)
-	pr_card.classList.add(`${pr.status}`)
+	const status = pr.status
+
+	pr_card.classList.add(`${status}`)
+
+	//Check if sourceCode should be overwritten
+	if (status === "accepted") {
+		const doc = sourceCode.getDoc()
+		doc.replaceRange(pr.suggestion, pr.coords.from, pr.coords.to)
+	}
 })

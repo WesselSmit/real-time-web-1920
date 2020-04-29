@@ -127,6 +127,7 @@ export function pr_pending(pr) {
 	return card
 }
 
+
 //Create PR review part 
 export function createReviewSection(card) {
 	const pr_review = document.createElement('div')
@@ -146,37 +147,13 @@ export function createReviewSection(card) {
 	return [acceptButton, declineButton]
 }
 
+
 export function getPRstatus(button) {
 	return (button.textContent === "Accept") ? "accepted" : "declined"
 }
+
 
 //Remove all list-items from passed list
 function removeList(list) {
 	list.innerHTML = ""
 }
-
-
-
-//Overwrite code-selection
-// export function pullRequest(sourceCode) {
-// 	//Credits to: https://stackoverflow.com/questions/23733455/inserting-a-new-text-at-given-cursor-position
-
-// 	const suggestionInput = document.getElementById('suggestion')
-
-// 	const selection = sourceCode.getSelection()
-// 	const suggestion = suggestionInput.value
-
-// 	if (selection.length > 0) {
-// 		sourceCode.replaceSelection(suggestion)
-// 	} else {
-// 		const doc = sourceCode.getDoc()
-// 		const cursor = doc.getCursor()
-
-// 		const pos = {
-// 			line: cursor.line,
-// 			ch: cursor.ch
-// 		}
-
-// 		doc.replaceRange(suggestion, pos)
-// 	}
-// }
