@@ -126,12 +126,10 @@ function getRoomSourceCode(roomName) {
 
 
 //Save PR
-function savePullRequest(roomName, pr, sender) {
+function savePullRequest(roomName, pr) {
 	const matchingRoom = findRoomWithName(roomName)
 
-	pr.sender = sender
 	matchingRoom.pullRequests.push(pr)
-
 	return matchingRoom.pullRequests
 }
 

@@ -91,7 +91,8 @@ if (info.user != info.host) {
 				message,
 				reference,
 				suggestion,
-				id: uid
+				id: uid,
+				sender: info.user
 			}
 
 			update.resetPR()
@@ -144,8 +145,8 @@ socket.on('update-code', code => update.sourceCode(code, sourceCode))
 
 
 //Update Pull-Request (pending)
-socket.on('pull-request-pending', (sender, pr) => {
-	const pr_pending_card = update.pr_pending(info, sender, pr)
+socket.on('pull-request-pending', pr => {
+	const pr_pending_card = update.pr_pending(pr)
 
 	//If (user === host) also create a review part in the card
 	if (info.host === info.user) {
@@ -153,10 +154,17 @@ socket.on('pull-request-pending', (sender, pr) => {
 		reviewButtons.forEach(button => button.addEventListener('click', () => {
 
 			//Update the status (accepted / declined color)
-			const status = update.reviewPRstatus(pr_pending_card, button)
+			const status = update.getPRstatus(button)
 
 			//Emit review to server
 			socket.emit('pull-request-review', info, pr.id, status)
 		}))
 	}
+})
+
+
+//Update Pull-Request (reviewed)
+socket.on('pull-request-reviewed', pr => {
+	const pr_card = document.querySelector(`[pr-id="${pr.id}"]`)
+	pr_card.classList.add(`${pr.status}`)
 })

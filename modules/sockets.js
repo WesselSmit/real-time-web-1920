@@ -45,10 +45,10 @@ module.exports = io => {
 		socket.on('pull-request-submit', (client, pr) => {
 
 			//Save PR to server
-			data.savePullRequest(client.room, pr, client.user)
+			data.savePullRequest(client.room, pr)
 
 			//Send pull-request to ALL users in room (also host)
-			io.in(client.room).emit('pull-request-pending', client, pr)
+			io.in(client.room).emit('pull-request-pending', pr)
 		})
 
 
@@ -58,7 +58,6 @@ module.exports = io => {
 		//TODO: zorg dat PR-display autoscrolled naar beneden
 
 		//TODO:
-		//todo - update server data
 		//todo - update all users in room
 		//todo - if accepted => overwrite code
 
@@ -66,6 +65,8 @@ module.exports = io => {
 
 			//Update the status of the pull request in data
 			const pr = data.assignPullRequestStatus(client.room, id, status)
+
+			console.log(pr)
 
 			//Send updated pull request object to ALL clients (also host)
 			io.in(client.room).emit('pull-request-reviewed', pr)

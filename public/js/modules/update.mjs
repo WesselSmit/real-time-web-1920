@@ -64,16 +64,17 @@ export function hidePRmenu() {
 
 
 //Create pending pr card & insert in DOM
-export function pr_pending(info, sender, pr) {
+export function pr_pending(pr) {
 	const pr_display = document.getElementById('pr-display')
 
 	const card = document.createElement('article')
 	card.classList.add('pr-card')
+	card.setAttribute('pr-id', pr.id)
 	pr_display.append(card)
 
 	const name = document.createElement('h2')
 	name.classList.add('pr-card-name')
-	name.textContent = sender.user
+	name.textContent = pr.sender
 	card.append(name)
 
 	const id = document.createElement('p')
@@ -145,14 +146,8 @@ export function createReviewSection(card) {
 	return [acceptButton, declineButton]
 }
 
-export function reviewPRstatus(card, button) {
-	if (button.textContent === "Accept") {
-		card.classList.add('accepted')
-		return "accepted"
-	} else {
-		card.classList.add('declined')
-		return "declined"
-	}
+export function getPRstatus(button) {
+	return (button.textContent === "Accept") ? "accepted" : "declined"
 }
 
 //Remove all list-items from passed list
