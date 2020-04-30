@@ -217,5 +217,9 @@ socket.on('pull-request-reviewed', pr => {
 	if (status === "accepted") {
 		const doc = sourceCode.getDoc()
 		doc.replaceRange(pr.suggestion, pr.coords.from, pr.coords.to)
+
+		//Update sourceCode for all clients who join later (and weren't in the room when the updated was triggered)
+		const editorCode = sourceCode.getValue()
+		socket.emit('code-edit', info, editorCode)
 	}
 })
