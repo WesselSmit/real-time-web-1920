@@ -1,1 +1,40 @@
-css
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/master.css" type="text/css">
+	<link rel="icon" href="/media/images/logo_color.ico" type="image/x-icon" />
+	<title>Code Exchange</title>
+
+	<script src="./libraries/codemirror/lib/codemirror.js"></script>
+	<script src="./libraries/codemirror/mode/css/css.js"></script>
+	<script src="./libraries/codemirror/addon/display/placeholder.js"></script>
+	<script src="./libraries/codemirror/addon/edit/closetag.js"></script>
+	<script src="./libraries/codemirror/addon/search/searchcursor.js"></script>
+
+	<link rel="stylesheet" href="./libraries/codemirror/lib/codemirror.css" type="text/css">
+	<link rel="stylesheet" href="./libraries/codemirror/theme/dracula.css" type="text/css">
+</head>
+
+<body id="room">
+
+	<input type="hidden" id="info" room-language="css" room-mode="css" room-name="<%= roomName %>"
+		user-name="<%= username %>" host-name="<%= host %>">
+
+	<main>
+		<section id="code-container">
+			<textarea id="editor" placeholder="/* Type your CSS code here... */"></textarea>
+		</section>
+
+		<%- include('partials/communication', {host, username}) %>
+
+		<%- include('partials/menu') %>
+	</main>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="module" src="/js/main.js"></script>
+</body>
+
+</html>

@@ -29,7 +29,6 @@ const sourceCode = CodeMirror.fromTextArea(editor, {
 
 
 
-
 //PR variables
 if (info.user != info.host) {
 	const pr_input_container = document.getElementById('pr-input-container')
@@ -38,6 +37,7 @@ if (info.user != info.host) {
 	const pr_suggestion = document.getElementById('pr-suggestion')
 	const pr_toggle = document.getElementById('pr-toggle')
 	const pr_submit = document.getElementById('pr-submit')
+	const minimumRows = 3
 
 	//Make selection on mouse activity
 	document.addEventListener('mouseup', () => {
@@ -78,6 +78,8 @@ if (info.user != info.host) {
 			pr_submit_warning.classList.remove('hidden')
 		} else {
 			pr_submit_warning.classList.add('hidden')
+			pr_message.setAttribute('rows', minimumRows)
+			pr_suggestion.setAttribute('rows', minimumRows)
 
 			const uid = utils.generateUID()
 			const message = pr_message.value
@@ -105,7 +107,6 @@ if (info.user != info.host) {
 	//Control the pr-input textarea row-sizes
 	const pr_inputs = [pr_message, pr_suggestion]
 	pr_inputs.forEach(input => {
-		const minimumRows = 3
 		input.setAttribute('rows', minimumRows)
 
 		input.addEventListener('input', () => {
@@ -171,6 +172,12 @@ socket.on('get-pull-requests', pullRequests => {
 			update.pr_pending(pr)
 		}
 	})
+
+	//Scroll last pr-card into view
+	const lastPRcard = document.querySelector('#pr-display > article:last-of-type')
+	if (lastPRcard) {
+		utils.scrollDown(lastPRcard)
+	}
 })
 
 

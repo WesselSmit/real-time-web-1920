@@ -499,7 +499,7 @@ div.CodeMirror-dragcursors {
 }
 
 .CodeMirror-selected {
-  background: #d9d9d9;
+  background: rgba(143, 151, 198, .2) !important;
 }
 
 .CodeMirror-focused .CodeMirror-selected {
