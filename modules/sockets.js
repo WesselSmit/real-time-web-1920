@@ -86,11 +86,18 @@ module.exports = io => {
 			//Remove room if it's empty
 			const numberOfUsers = data.getUsersInRoom(room).length
 			if (numberOfUsers < 1) { //Room is empty
-				data.deleteRoom(room)
 
-				//Send updated room-list to everyone in all rooms
-				const rooms = data.getRooms()
-				io.emit('room-list', rooms)
+				//Check if user reconnects within allowed time
+				const allowedTime = 3000
+				setTimeout(() => {
+					if (data.getUsersInRoom(room).length < 1) { //Room is still empty
+						data.deleteRoom(room)
+
+						//Send updated room-list to everyone in all rooms
+						const rooms = data.getRooms()
+						io.emit('room-list', rooms)
+					}
+				}, allowedTime)
 			} else {
 				//Send updated  user-list to everyone in room
 				const users = data.getUsersInRoom(room)
