@@ -40,7 +40,8 @@
 					<% rooms.forEach(room => { %>
 					<input type="radio" name="room" value="<%= room.name %>" id="room-<%= room.name %>" tabindex="-1"
 						class="availableRoom" required>
-					<label for="room-<%= room.name %>" tabindex="0"><%= room.name %></label>
+					<label for="room-<%= room.name %>" tabindex="0"><%= room.name %>
+						<span>(<%= room.language %>)</span></label>
 					<% }) } else { %>
 					<p class="no-rooms-warning">No rooms available currently...</p>
 					<p class="no-rooms-warning">Be the first to host a room!</p>

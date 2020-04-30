@@ -222,6 +222,13 @@
 					&:hover::before {
 						background-image: url(../media/images/half-filled-item-icon.svg);
 					}
+
+
+
+					span {
+						font-family: $body-font;
+						font-size: 12px;
+					}
 				}
 
 
