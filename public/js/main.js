@@ -33,6 +33,7 @@ const sourceCode = CodeMirror.fromTextArea(editor, {
 //PR variables
 if (info.user != info.host) {
 	const pr_input_container = document.getElementById('pr-input-container')
+	const pr_message = document.getElementById('pr-message')
 	const pr_reference = document.getElementById('pr-reference')
 	const pr_suggestion = document.getElementById('pr-suggestion')
 	const pr_toggle = document.getElementById('pr-toggle')
@@ -71,7 +72,6 @@ if (info.user != info.host) {
 		const suggestion = pr_suggestion.value
 
 		const pr_submit_warning = document.getElementById('pr-submit-warning')
-		const pr_message = document.getElementById('pr-message')
 
 		//Check if all required inputs are answered
 		if (reference === "" || suggestion === "") {
@@ -99,6 +99,29 @@ if (info.user != info.host) {
 
 			socket.emit('pull-request-submit', info, pr)
 		}
+	})
+
+
+	//Control the pr-input textarea row-sizes
+	const pr_inputs = [pr_message, pr_suggestion]
+	pr_inputs.forEach(input => {
+		const minimumRows = 3
+		input.setAttribute('rows', minimumRows)
+
+		input.addEventListener('input', () => {
+			let rows = input.value.split('\n').length
+
+			//Set minimum row size
+			if (rows < minimumRows) {
+				rows = minimumRows
+			}
+
+			if (input === pr_message) {
+				input.setAttribute('rows', rows)
+			} else if (input === pr_suggestion) {
+				input.setAttribute('rows', rows)
+			}
+		})
 	})
 }
 
@@ -128,7 +151,6 @@ sourceCode.on('change', utils.debounce((editor, change) => {
 
 
 
-//TODO: de grootte van de create-pull-request form textarea's moeten even groot zijn als het aantal regels (net zoals de pending cards hebben)
 
 
 
