@@ -1,6 +1,6 @@
 # Concept
 
-This app allows people to troubleshoot and improve your code, through: pull requests, validation & syntax highlighting. 
+This app allows people to troubleshoot and improve your code, through: pull requests & syntax highlighting. 
 
 It's a platform where programmers can help peers through a real-time connection; all users in the same room can see the host's code (real-time updated). User can reference code which allows them to:
 * mark invalid/jeopardizing code
@@ -8,7 +8,6 @@ It's a platform where programmers can help peers through a real-time connection;
 
 It also has core code-editor features to improve the user experience and help identify problems early;
 * syntax highlighting
-* code validation (hinters)
 * beautify
 
 
