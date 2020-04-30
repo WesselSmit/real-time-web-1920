@@ -128,16 +128,28 @@ sourceCode.on('change', utils.debounce((editor, change) => {
 
 
 
+//TODO: de grootte van de create-pull-request form textarea's moeten even groot zijn als het aantal regels (net zoals de pending cards hebben)
 
 
 
-
-//Update rooms
+//Update rooms list
 socket.on('room-list', rooms => update.roomList(rooms, info.room))
 
 
-//Update users
+//Update users list
 socket.on('user-list', users => update.userList(users, info.user, info.host))
+
+
+//Get Pull-Requests 
+socket.on('get-pull-requests', pullRequests => {
+	pullRequests.forEach(pr => {
+		if (pr.hasOwnProperty('status')) {
+			update.pr_reviewed(pr)
+		} else {
+			update.pr_pending(pr)
+		}
+	})
+})
 
 
 //Update Code
@@ -154,7 +166,7 @@ socket.on('pull-request-pending', pr => {
 		reviewButtons.forEach(button => button.addEventListener('click', () => {
 
 			//Update the status (accepted / declined color)
-			const status = update.getPRstatus(button)
+			const status = update.getPRstatus(button.textContent)
 
 			//Emit review to server
 			socket.emit('pull-request-review', info, pr.id, status)

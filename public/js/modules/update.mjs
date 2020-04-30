@@ -148,8 +148,15 @@ export function createReviewSection(card) {
 }
 
 
-export function getPRstatus(button) {
-	return (button.textContent === "Accept") ? "accepted" : "declined"
+export function getPRstatus(status) {
+	return (status === "Accept") ? "accepted" : "declined"
+}
+
+
+export function pr_reviewed(pr) {
+	const card = pr_pending(pr)
+	const status = pr.status
+	card.classList.add(`${status}`)
 }
 
 

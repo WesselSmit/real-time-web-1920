@@ -25,6 +25,10 @@ module.exports = io => {
 			//Send sourceCode to joined client
 			const sourceCode = data.getRoomSourceCode(client.room)
 			socket.emit('update-code', sourceCode)
+
+			//Send all Pull-Requests from room to joined client
+			const pullRequests = data.getRoomPullRequests(client.room)
+			socket.emit('get-pull-requests', pullRequests)
 		})
 
 
@@ -41,7 +45,7 @@ module.exports = io => {
 
 
 
-
+		//Pull-Request submitted by client
 		socket.on('pull-request-submit', (client, pr) => {
 
 			//Save PR to server
@@ -53,10 +57,7 @@ module.exports = io => {
 
 
 
-		//TODO: pull-requests moeten weergegeven worden wanneer de gebruiker connect (met de correcte status)
-		//TODO: de grootte van de create-pull-request form textarea's moeten even groot zijn als het aantal regels (net zoals de pending cards hebben)
-		//TODO: zorg dat PR-display autoscrolled naar beneden
-
+		//Pull-Request reviewed by host
 		socket.on('pull-request-review', (client, id, status) => {
 
 			//Update the status of the pull request in data
