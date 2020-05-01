@@ -29,8 +29,6 @@ app.use(
 	})
 )
 
-// TODO: join room gebeurt nu al in register maar moet dit niet pas op de pagina zelf op het 'connection' event?
-// todo:       ^ zie de YT socketio tutorial over hoe je meerdere rooms kan implementeren
 
 //Set sockets
 sockets(io)
