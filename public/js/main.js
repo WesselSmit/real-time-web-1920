@@ -242,6 +242,6 @@ socket.on('pull-request-reviewed', pr => {
 
 
 //Update Syntax Snippets
-socket.on('syntax-snippet', (requestor, snippet) => {
-	console.log(requestor, snippet)
+socket.on('syntax-snippet', (snippet, keyword) => {
+	update.snippetCard(snippet, keyword)
 })

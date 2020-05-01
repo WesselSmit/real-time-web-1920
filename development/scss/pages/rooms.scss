@@ -54,7 +54,7 @@
 						grid-template-columns: 1fr 1fr;
 
 
-						&:last-of-type {
+						&:last-child {
 							margin-bottom: 0;
 						}
 
@@ -208,6 +208,45 @@
 									}
 								}
 							}
+						}
+					}
+
+
+					.syntax-snippet {
+						background-color: $primary-color;
+						color: $text-color;
+						border: 1px dashed $secondary-color;
+						margin: 0 auto 20px auto;
+						padding: 10px;
+						max-width: 500px;
+
+
+						&:last-child {
+							margin-bottom: 0;
+						}
+
+
+						h3 {
+							margin: 0;
+							font-family: $body-font;
+							font-size: 16px;
+							margin-bottom: 10px;
+						}
+
+
+						p {
+							font-size: 12px;
+							font-family: $header-font;
+							color: $secondary-color;
+							margin: 0 0 5px 0;
+						}
+
+
+						pre {
+							margin: 0;
+							background-color: $communication-background-color;
+							font-size: 12px;
+							font-family: $body-font;
 						}
 					}
 				}

@@ -75,10 +75,9 @@ module.exports = io => {
 		//Users requests JS-keyword lookup
 		socket.on('syntax-lookup', async (client, keyword) => {
 			const snippet = await scraper(keyword)
-			const requestor = client.user
 
-			//Send syntax-snippet to ALL clients (also host)
-			io.in(client.room).emit('syntax-snippet', requestor, snippet)
+			//Send syntax-snippet to client
+			socket.emit('syntax-snippet', snippet, keyword)
 		})
 
 

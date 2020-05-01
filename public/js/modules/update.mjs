@@ -160,6 +160,29 @@ export function pr_reviewed(pr) {
 }
 
 
+
+export function snippetCard(snippet, keyword) {
+	const pr_display = document.getElementById('pr-display')
+
+	const card = document.createElement('div')
+	card.classList.add('syntax-snippet')
+	pr_display.append(card)
+
+	const syntaxKeyword = document.createElement('h3')
+	syntaxKeyword.textContent = keyword
+	card.append(syntaxKeyword)
+
+	const snippetTitle = document.createElement('p')
+	snippetTitle.textContent = "Syntax:"
+	card.append(snippetTitle)
+
+	const syntaxSnippet = document.createElement('pre')
+	syntaxSnippet.textContent = snippet
+	card.append(syntaxSnippet)
+
+	return card
+}
+
 //Remove all list-items from passed list
 function removeList(list) {
 	list.innerHTML = ""

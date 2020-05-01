@@ -42,6 +42,6 @@ module.exports = async keyword => {
 
 		return syntaxExample
 	} catch (err) {
-		return "Couldn't find a snippet"
+		return `Couldn't find a snippet for: ${keyword}`
 	}
 }
