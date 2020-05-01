@@ -238,3 +238,10 @@ socket.on('pull-request-reviewed', pr => {
 		socket.emit('code-edit', info, editorCode)
 	}
 })
+
+
+
+//Update Syntax Snippets
+socket.on('syntax-snippet', (requestor, snippet) => {
+	console.log(requestor, snippet)
+})
