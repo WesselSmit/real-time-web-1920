@@ -130,6 +130,21 @@ if (info.user != info.host) {
 
 
 
+//JS Syntax search 
+if (info.language === "javascript") {
+	const searchButton = document.querySelector('#mdn-container input[type=submit]')
+
+	searchButton.addEventListener('click', () => {
+		const searchInput = document.getElementById('mdn-search').value
+
+		socket.emit('syntax-lookup', info, searchInput)
+	})
+}
+
+
+
+
+
 
 
 const debounceTime = 250

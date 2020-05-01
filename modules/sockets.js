@@ -1,4 +1,5 @@
 const data = require('#modules/data')
+const scraper = require('#modules/scraper')
 
 module.exports = io => {
 
@@ -65,6 +66,16 @@ module.exports = io => {
 
 			//Send updated pull request object to ALL clients (also host)
 			io.in(client.room).emit('pull-request-reviewed', pr)
+		})
+
+
+
+
+
+		//Users enters JS-keyword for syntax lookup
+		socket.on('syntax-lookup', (client, keyword) => {
+			const snippet = scraper(keyword)
+			console.log(snippet)
 		})
 
 

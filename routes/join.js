@@ -15,6 +15,7 @@ module.exports = (req, res) => {
 		rooms,
 		roomName: room,
 		host,
+		language
 	}
 
 	res.render(`${language}`, info)

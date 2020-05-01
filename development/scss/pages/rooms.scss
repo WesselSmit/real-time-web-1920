@@ -517,5 +517,57 @@
 				}
 			}
 		}
+
+
+		#mdn-container {
+			display: block;
+			padding: 10px 25px;
+			position: absolute;
+			bottom: 0;
+
+
+			label {
+				font-family: $body-font;
+				font-size: 13px;
+			}
+
+
+			#mdn-search {
+				background-color: $secondary-color;
+				color: $primary-color;
+				width: 100%;
+				border: 0;
+				font-family: $body-font;
+				font-size: 12px;
+				padding: 3px 0 3px 3px;
+				outline: none;
+
+
+				&::placeholder {
+					color: $primary-color;
+					opacity: .75;
+				}
+			}
+
+
+			input[type=submit] {
+				color: $secondary-color;
+				border: 0;
+				border-bottom: 2px solid $primary-color;
+				margin: 10px auto 0 auto;
+				display: block;
+				width: fit-content;
+				padding: 0 5px;
+				outline: none;
+
+
+				&:hover,
+				&:focus {
+					border-bottom: 2px solid $secondary-color;
+					background-color: $primary-color;
+					color: $secondary-color;
+				}
+			}
+		}
 	}
 }
