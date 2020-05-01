@@ -4,7 +4,7 @@ module.exports = async keyword => {
 	try {
 		//Open chromium browser (headless) & open a page
 		const browser = await puppeteer.launch({
-			args: [ //Allow to run in environments such as heroku
+			args: [ //Allow to run in external environments such as heroku
 				'--no-sandbox',
 				'--disable-setuid-sandbox',
 			],
