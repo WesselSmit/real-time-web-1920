@@ -16,7 +16,7 @@
 		<ul id="users-list"></ul>
 	</article>
 
-	<% if (locals.language && language === "javascript") { %>
+	<% if (locals.language && language === "javascript" || locals.language && language === "css") { %>
 	<div id="mdn-container">
 		<label for="mdn-search">Get syntax example</label>
 		<input type="text" id="mdn-search" name="keyword" placeholder="Enter keyword">

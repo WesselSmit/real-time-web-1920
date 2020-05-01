@@ -1,3 +1,5 @@
+import * as utils from './utils.mjs'
+
 //Update list of all rooms
 export function roomList(rooms, currentRoom) {
 	const roomList = document.getElementById('rooms-list')
@@ -179,6 +181,8 @@ export function snippetCard(snippet, keyword) {
 	const syntaxSnippet = document.createElement('pre')
 	syntaxSnippet.textContent = snippet
 	card.append(syntaxSnippet)
+
+	utils.scrollDown(card)
 
 	return card
 }

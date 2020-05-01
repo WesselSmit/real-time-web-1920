@@ -131,13 +131,15 @@ if (info.user != info.host) {
 
 
 //JS Syntax search 
-if (info.language === "javascript") {
+if (info.language === "javascript" || info.language === "css") {
 	const searchButton = document.querySelector('#mdn-container input[type=submit]')
 
 	searchButton.addEventListener('click', () => {
-		const searchInput = document.getElementById('mdn-search').value
+		const searchInput = document.getElementById('mdn-search')
 
-		socket.emit('syntax-lookup', info, searchInput)
+		socket.emit('syntax-lookup', info, searchInput.value)
+
+		searchInput.value = ""
 	})
 }
 
