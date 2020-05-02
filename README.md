@@ -62,11 +62,19 @@ npm start
 
 | Event | Trigger | Usage | 
 | ----- | ------- | ------- | 
-| `join-room` | when script loads | save user in database, join channel, get code to display, get lists of: rooms, users, pull-requests to display | 
-| `code-edit` | when host edits code | save code in database, updates code for all users | 
-| `pull-request-submit` | when user submits pull-request | updates interface for all clients with submitted pull-request | 
-| `pull-request-review` | when host accepts/declines pull-request | updates interface for all clients with reviewed pull-request (reflecting review status) & if accepted also overwrites the code | 
-| `syntax-lookup` | when user submits keyword input | searches for [keyword] syntax example on mdn ([details](https://github.com/WesselSmit/real-time-web-1920/#external-api)) | 
+| `join-room` | when script loads | save user in database, subscribe to channel (fires `room-list`, `user-list`, `update-code` & `get-pull-requests`) | 
+| `room-list` | when a client joins/leaves room | send list of all rooms & update list of rooms in interface | 
+| `user-list` | when a client joins/leaves room | send list of all users in current room & update list of users in interface | 
+| `update-code` | when a client joins room / host edits code | get most recent code & update displayed code | 
+| `get-pull-requests` | when a client joins room | get all pull-requests in room & update list of pull-requests in interface | 
+| `code-edit` | when host edits code | save code in database (fires `update-code`) | 
+| `pull-request-submit` | when user submits pull-request | saves pull-request to database (fires `pull-request-pending`) |
+| `pull-request-pending` | when user submits pull-request | updates interface for all clients with submitted pull-request |
+| `pull-request-review` | when host accepts/declines pull-request | updates pull-request status in database (fires `pull-request-reviewed`) | 
+| `pull-request-reviewed` | when host accepts/declines pull-request | updates interface for all clients with reviewed pull-request (reflecting review status) & if accepted also overwrites the code | 
+| `syntax-lookup` | when user submits keyword input | searches for [keyword] syntax example on mdn (fires `syntax-snippet`) | 
+| `syntax-snippet` | when user submits keyword input | updates interface for client with syntax-snippet | 
+
 
 
 
