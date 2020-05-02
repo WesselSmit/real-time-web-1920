@@ -67,8 +67,36 @@ List of all custom events:
 
 # External API
 
-TODO: general API information (what it does, rate limit, key, register instructions etc.)
+I ended up not using an api, instead I use [puppeteer](https://github.com/puppeteer/puppeteer) to scrape [mdn](https://developer.mozilla.org/en-US/) for syntax snippets. Users can enter a keyword to get a syntax example.
 
-TODO: data format
+### How it works
+
+1. User enters keyword they want the syntax snippet for.
+
+<img src="https://user-images.githubusercontent.com/45405413/80891991-fa10b180-8cc7-11ea-9cdd-fba14876ba1e.png" width="200px">
+
+2. Puppeteer launches a headless browser instance, navigates to [google](https://www.google.com) and enters the following search query:
+
+```
+mdn [keyword] site:developer.mozilla.org
+```
+
+> `site:developer.mozilla.org` ensures that all results are from [mdn](https://developer.mozilla.org/en-US/)
+
+3. Puppeteer navigates to the first google-result link. (which'll navigate to mdn)
+
+> I decided to use google's search engine instead of the mdn search functionality because mdn's search function doesn't take popularity in account when searching which means you can end up with mismatches (e.g. first result for `append` on mdn is `headers.append` instead of `parentNode.append`) 
+
+4. Every page that has a syntax sxample on mdn follows the same structure (which makes this possible); the syntax snippet always comes right after a title "Syntax".
+
+<img src="https://user-images.githubusercontent.com/45405413/80892338-853e7700-8cc9-11ea-8eaa-41c70d9217c3.png">
+
+5. Puppeteer waits for the `#Syntax` selector to be available and then grabs the next `<pre>` element's textContent. (this is the syntax snippet)
+
+6. This snippet is send to the client, the javascript code creates a card which is appended to the DOM.
+
+<img src="https://user-images.githubusercontent.com/45405413/80892427-40ffa680-8cca-11ea-8852-e55c7b24f13e.png" height="100px">
+
+>If at any point an error occurs the client is send an card which contains a error message.<img src="https://user-images.githubusercontent.com/45405413/80892467-af446900-8cca-11ea-94f1-f1ad425eb9dd.png" height="100px">
 
 [MIT](https://github.com/WesselSmit/real-time-web-1920/blob/master/LICENSE) © [Wessel Smit](https://github.com/WesselSmit)
