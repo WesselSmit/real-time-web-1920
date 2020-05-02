@@ -14,7 +14,7 @@ const sockets = require("#modules/sockets")
 const router = {
 	login: require("#routes/login"),
 	join: require("#routes/join"),
-	host: require("#routes/host"),
+	host: require("#routes/host")
 }
 
 
