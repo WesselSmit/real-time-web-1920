@@ -113,4 +113,26 @@ mdn [keyword] site:developer.mozilla.org
 
 >If at any point an error occurs the client is send an card which contains a error message.<img src="https://user-images.githubusercontent.com/45405413/80892467-af446900-8cca-11ea-94f1-f1ad425eb9dd.png" height="100px">
 
+# Credits
+
+### [codemirror](https://codemirror.net/)
+
+Library used to make the code-editor 
+
+### [socketIO](https://socket.io/)
+
+Package used to establish real-time connection
+
+### [puppeteer](https://github.com/puppeteer/puppeteer)
+
+Package used to scrape mdn for syntax examples
+
+### [Particle Animation](https://codepen.io/tutsplus/pen/MrjYJK?editors=0100)
+
+Animation by `tutsplus` for the particles used in the register screen
+
+### [Input Animation](https://codepen.io/lucasyem/pen/ZEEYKdj?editors=1100)
+
+Animation by `lucsayem` for the input used in the register screen
+
 [MIT](https://github.com/WesselSmit/real-time-web-1920/blob/master/LICENSE) © [Wessel Smit](https://github.com/WesselSmit)
