@@ -11,7 +11,7 @@ It also has core code-editor features to improve the user experience and help id
 * beautify
 
 
-![RTWdesign](https://user-images.githubusercontent.com/45405413/79219333-5cf1f400-7e52-11ea-9e82-ee9950d86d33.png)
+![image](https://user-images.githubusercontent.com/45405413/80893530-680ea600-8cd3-11ea-9f84-e2e6bacd9423.png)
 
 The app has  sections:
 * [left] The host (and only the host) can type their code (source code)
