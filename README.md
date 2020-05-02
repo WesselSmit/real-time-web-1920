@@ -58,12 +58,18 @@ npm start
 
 # Real-Time Events
 
-List of all custom events:
+> `users` refers to everyone in room **except** host, `clients` refers to all users in room **including** host
+
+| Event | Trigger | Usage | 
+| ----- | ------- | ------- | 
+| `join-room` | when script loads | save user in database, join channel, get code to display, get lists of: rooms, users, pull-requests to display | 
+| `code-edit` | when host edits code | save code in database, updates code for all users | 
+| `pull-request-submit` | when user submits pull-request | updates interface for all clients with submitted pull-request | 
+| `pull-request-review` | when host accepts/declines pull-request | updates interface for all clients with reviewed pull-request (reflecting review status) & if accepted also overwrites the code | 
+| `syntax-lookup` | when user submits keyword input | searches for [keyword] syntax example on mdn ([details](https://github.com/WesselSmit/real-time-web-1920/#external-api)) | 
 
 
-* 
-* 
-* 
+
 
 # External API
 
