@@ -1,26 +1,44 @@
 # Concept
 
-This app allows people to troubleshoot and improve your code, through: pull requests & syntax highlighting. 
+This app allows people to troubleshoot and improve your code through: pull requests & syntax highlighting. 
 
-It's a platform where programmers can help peers through a real-time connection; all users in the same room can see the host's code (real-time updated). User can reference code which allows them to:
+It's a platform where programmers can help peers through a real-time connection; all users in the same room can see the host's code (updated in real-time). User can reference code which allows them to:
 * mark invalid/jeopardizing code
 * suggest improvements/fixes through pull-requests
 
-It also has core code-editor features to improve the user experience and help identify problems early;
-* syntax highlighting
-* beautify
-
-
 ![image](https://user-images.githubusercontent.com/45405413/80893530-680ea600-8cd3-11ea-9f84-e2e6bacd9423.png)
 
-The app has  sections:
-* [left] The host (and only the host) can type their code (source code)
-* [middle] Pull requests & Code suggestions; users can suggest improvements through pull requests
-     * [pull request] Users can reference source code line(s) and make suggestions (host can either accept or decline these, accepting overwrites referenced source code lines with pulled reuest)
-* [right] Navigation & info
-     * [rooms] List of available rooms (available coding/programming languages)
-     * [users] List of users in current room
-     
+## Features
+
+**Language support**
+
+HTML, CSS & JS are supported.
+
+**Syntax highlighting**
+
+All syntax is highlighted to help notice typos.
+
+**Pull-requests**
+
+Users can reference code and offer replacement suggestions, a pull-request consists of:
+* reference; reference (multiple) lines of code **(required)**
+* suggestion; suggest a replacement for the referenced code **(required)**
+* message; attach a message to explain your suggested changes **(optional)**
+
+> Only referencing whitespace adds suggested code at position of the referenced code
+
+**Syntax examples**
+
+Allow users to lookup syntax  and receive examples/snippets from mdn by entering a keyword
+
+**Real-time**
+
+All content in the interface is updated in real-time;
+* list of rooms
+* list of users
+* code
+* pull-request (and all it's status updates)
+* syntax snippets
 
 # Install Notes
 
