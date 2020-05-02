@@ -15,7 +15,7 @@ module.exports = async keyword => {
 		//Navigate to Google
 		await page.goto("https://google.com")
 
-		const searchInputEl = "input.gLFyf.gsfi"
+		const searchInputEl = "input.gLFyf.gsfi" //Google search-input element
 		const searchQuery = `javascript ${keyword} site:developer.mozilla.org`
 
 		//Enter query in search input & hit 'enter' to search
