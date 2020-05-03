@@ -70,6 +70,8 @@ npm start
 
 # Data Life Cycle
 
+I didn't have enough time to integrate a database so all data is stored on the server for now, however the structure would pretty much be the same except all data would live in the database and additional calls would have to be made between server and database before sending the data back to the client.
+
 >v3.0 _(sunday May 3rd)_
 
 ![DLC v3 0](https://user-images.githubusercontent.com/45405413/80915213-2a506280-8d51-11ea-93d3-58ab7702417d.png)
