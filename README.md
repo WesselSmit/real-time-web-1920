@@ -145,6 +145,14 @@ Package used to establish real-time connection
 
 Package used to scrape mdn for syntax examples
 
+### [Debounce Function](https://www.geeksforgeeks.org/debouncing-in-javascript/)
+
+I used their javascript debounce function
+
+### [Generate UID Function](https://gist.github.com/jsmithdev/1f31f9f3912d40f6b60bdc7e8098ee9f)
+
+I used `jsmithdev`'s UID generator function
+
 ### [Particle Animation](https://codepen.io/tutsplus/pen/MrjYJK?editors=0100)
 
 Animation by `tutsplus` for the particles used in the register screen
