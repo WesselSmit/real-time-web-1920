@@ -172,6 +172,12 @@ mdn [keyword] site:developer.mozilla.org
 
 >If at any point an error occurs the client is send an card which contains a error message.<img src="https://user-images.githubusercontent.com/45405413/80892467-af446900-8cca-11ea-94f1-f1ad425eb9dd.png" height="100px">
 
+# Expansion
+
+If I had more time I would've liked to expand the syntax-lookup feature, there are a lot of possibilities and it's a really cool package. If I had more time I would've made a interface and help users lookup the syntax examples through offering addition search settings such as: choosing a website, choosing from the results after querying, get additional info such as (return-) values, and maybe examples in context.
+
+The pull-request feature is very robust as of now and could be improved bt making it more intuitive.
+
 # Credits
 
 ### [codemirror](https://codemirror.net/)
