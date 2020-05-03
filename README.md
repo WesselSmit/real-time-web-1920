@@ -74,6 +74,44 @@ npm start
 
 ![DLC v3 0](https://user-images.githubusercontent.com/45405413/80915213-2a506280-8d51-11ea-93d3-58ab7702417d.png)
 
+The data on the server looks like this:
+
+```javascript
+const data = {
+	rooms: [{
+		name: "string",
+		language: "string",
+		host: {
+			name: "string",
+			id: "string"
+		},
+		users: [{
+			name: "string",
+			id: "string"
+		}, {...}],
+		code: "string",
+		pullRequests: [{
+			coordinates: {
+				from: {
+					line: 1,
+					char: 3
+				},
+				to: {
+					line: 5,
+					char: 10
+				}
+			},
+			message: "string",
+			reference: "string",
+			suggestion: "string",
+			id: "string",
+			sender: "string",
+			status: "string"
+		}, {...}]
+	}, {...}]
+}
+```
+
 
 # Real-Time Events
 
