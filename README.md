@@ -2,9 +2,17 @@
 
 This app allows people to troubleshoot and improve your code.
 
-It's a platform where programmers can help peers through a real-time connection; all users in the same room can see the host's code (updated in real-time). User can reference code which allows them to:
-* mark invalid/jeopardizing code
-* suggest improvements/fixes through pull-requests
+It's a platform where programmers can help peers through a real-time connection; all users in the same room can see the host's code (updated in real-time). Users can then improve the code through:
+* marking invalid/inseucre/jeopardizing code
+* suggest improvements/solutions/fixes through pull-requests
+
+
+## Core-Concept
+The concept uses **multiple rooms** to keep parties & coding languages separated. Every room has **1 host** and **X amount users**, the host can edit the source-code which automatically updates (with debounce) for all users in the room, this way users can see what you're doing and help troubleshoot.
+
+If an user wants to change/improve a part of the source-code they can submit a pull-request. This is done by selecting some of the source-code and attaching a edited code-snippet. Additionally users can attach messages to explain or elaborate on their solution!
+
+When submitted the pull-request will be shown in the feed which is shared across all clients, the user has the option to either **accept** or **decline** the pull-request.If **accepted** the referenced part of the source-code is overwritten with the suggested code, the status (and changes) of the pull-request are reflected visually in the feed.
 
 ![image](https://user-images.githubusercontent.com/45405413/80893530-680ea600-8cd3-11ea-9f84-e2e6bacd9423.png)
 
@@ -29,7 +37,7 @@ Users can reference code and offer replacement suggestions, a pull-request consi
 
 **Syntax examples**
 
-Allow users to lookup syntax  and receive examples/snippets from mdn by entering a keyword
+Allow users to lookup syntax  and receive examples/snippets from mdn by entering a keyword. On the server, using puppeteer, a headless-chromium browser instance is launched to find a mdn page and **scrapes** the associated syntax-example snippet.
 
 **Real-time**
 
