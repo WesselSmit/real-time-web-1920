@@ -2,9 +2,7 @@
 
 This app allows people to troubleshoot and improve your code.
 
-It's a platform where programmers can help peers through a real-time connection; all users in the same room can see the host's code (updated in real-time). Users can then improve the code through:
-* marking invalid/inseucre/jeopardizing code
-* suggest improvements/solutions/fixes through pull-requests
+It's a platform where programmers can help peers through a real-time connection; all users in the same room can see the host's code (updated in real-time). Users can then improve the code by suggesting improvements/solutions/fixes through pull-requests
 
 
 ## Core-Concept
